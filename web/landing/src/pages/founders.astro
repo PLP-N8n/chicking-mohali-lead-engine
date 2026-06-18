@@ -1,0 +1,720 @@
+---
+// Founders Club — Chicking Mohali Grand Opening pre-launch campaign
+// Client: Ajay Kumar
+//
+// NOTE: Replace OPENING_DATE with the confirmed opening date before go-live.
+import Layout from '../layouts/Layout.astro';
+
+const OPENING_DATE = '2026-08-01T11:00:00+05:30'; // REPLACE with Ajay's confirmed opening date
+
+const WHATSAPP_NUMBER = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '919821279081';
+const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://chicking-api.cvchaudhary.workers.dev';
+const WHATSAPP_FALLBACK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Chicking%20Mohali%2C%20I%20want%20to%20join%20the%20Founders%20Club`;
+
+const stats = [
+  { n: '475+', label: 'outlets' },
+  { n: '45', label: 'countries' },
+  { n: '25', label: 'years' },
+];
+
+const benefits = [
+  {
+    icon: '🍔',
+    title: 'Free Crispy Chicken Burger',
+    desc: 'Pehli visit pe free. On us.',
+  },
+  {
+    icon: '⬆️',
+    title: 'Free Meal Upgrade',
+    desc: 'Second visit pe free upgrade. Next level.',
+  },
+  {
+    icon: '🤫',
+    title: 'Secret Monthly Deals',
+    desc: 'Members-only drops, all year round. Sirf aapke liye.',
+  },
+  {
+    icon: '🎟️',
+    title: 'Golden Ticket Draw',
+    desc: 'Ek saal free Chicking jeetne ka chance. T&Cs apply.',
+  },
+];
+
+const steps = [
+  { n: 1, title: 'WhatsApp Community mein join karo', desc: 'Opening date, menu drops aur secret deals sabse pehle pao.' },
+  { n: 2, title: '@chickingmohali ko follow karo', desc: 'Jab bhi visit karo, tag karo — surprise perks unlock honge.' },
+  { n: 3, title: '3 doston ko refer karo', desc: 'Pyaar failao. Leaderboard pe chadho. Bigger rewards pao.' },
+];
+
+const sampleLeaders = [
+  { name: 'Aman', phone: '98••••8765', count: 47 },
+  { name: 'Simran', phone: '97••••1234', count: 41 },
+  { name: 'Rohit', phone: '88••••0099', count: 36 },
+  { name: 'Priya', phone: '91••••4455', count: 29 },
+  { name: 'Karan', phone: '95••••2211', count: 24 },
+  { name: 'Neha', phone: '99••••7788', count: 21 },
+  { name: 'Vikram', phone: '92••••3344', count: 18 },
+  { name: 'Sonia', phone: '94••••5566', count: 15 },
+  { name: 'Manpreet', phone: '96••••1122', count: 12 },
+  { name: 'Divya', phone: '93••••9988', count: 10 },
+];
+
+const title = 'Chicking Mohali Founders Club — Grand Opening';
+const description = 'Join the Chicking Mohali Founders Club. First 1,000 members get a free burger, secret deals & a shot at 1 year of free Chicking. Grand opening coming soon.';
+---
+
+<Layout title={title} description={description} page="founders">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="founders-page">
+  <section class="hero">
+    <img
+      src="/images/hero-mohali.jpg"
+      alt="Chicking Mohali — Mohali's new craving destination: crispy chicken, burgers, fries and drinks"
+      width="1672"
+      height="941"
+      loading="eager"
+    />
+    <div class="hero-badge" aria-label="Limited membership">
+      Founding 1,000 Members Only
+    </div>
+    <p class="hero-sub" style="font-size:clamp(1.15rem,3.2vw,1.55rem);margin-bottom:.4rem">Opening se pehle hi member ban jao.</p>
+    <p>Pehli visit pe free Crispy Chicken Burger, secret monthly deals, aur ek saal free Chicking jeetne ka mauka — <strong>sirf first 1,000 members ke liye.</strong> Grand opening coming soon.</p>
+    <p style="font-size:.72rem;color:#7a878c;margin:-.4rem 0 .2rem;max-width:36ch">Free burger &amp; yearly-prize draw are campaign mechanics. T&amp;Cs apply.</p>
+    <div style="width:100%;max-width:340px;margin:1.25rem 0 1.5rem">
+      <div style="display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:700;color:#BE1622;background:#fdeef0;border-radius:9999px;padding:.45rem 1rem">
+        <span aria-hidden="true">🔥</span> <span id="spots-cue-text">Sirf 1,000 founding spots — be one of the first</span>
+      </div>
+    </div>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#founders-form">Join the Founders Club</a>
+    </div>
+  </section>
+
+  <div class="stats" aria-label="Global Chicking presence">
+    {stats.map(s => (
+      <div>
+        <div class="stat-n">{s.n}</div>
+        <div class="stat-label">{s.label}</div>
+      </div>
+    ))}
+  </div>
+
+  <section class="countdown-wrap" aria-labelledby="countdown-heading">
+    <h2 id="countdown-heading" class="section-title" style="margin-bottom: .5rem;">Grand opening ki countdown!</h2>
+    <p style="color: var(--grey); margin-bottom: 1.5rem;">Tick tock — Mohali ka grand opening bilkul paas hai.</p>
+    <div class="countdown-grid" role="timer" aria-live="polite" aria-atomic="true">
+      <div class="countdown-item">
+        <div class="countdown-number" id="cd-days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="cd-hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="cd-minutes">00</div>
+        <div class="countdown-label">Mins</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="cd-seconds">00</div>
+        <div class="countdown-label">Secs</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="benefits-heading">
+    <div class="section-label">Perks</div>
+    <h2 id="benefits-heading" class="section-title">Why join the Founders Club?</h2>
+    <div class="benefits-grid">
+      {benefits.map(b => (
+        <div class="benefit-card">
+          <div class="benefit-icon" aria-hidden="true">{b.icon}</div>
+          <div>
+            <div class="benefit-title">{b.title}</div>
+            <div class="benefit-desc">{b.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="steps-wrap section" aria-labelledby="steps-heading">
+    <div class="section-label">How to claim</div>
+    <h2 id="steps-heading" class="section-title">Claim your Founders Club perks</h2>
+    <div class="steps-list">
+      {steps.map(s => (
+        <div class="step">
+          <div class="step-number" aria-hidden="true">{s.n}</div>
+          <div>
+            <div class="step-title">{s.title}</div>
+            <div class="step-desc">{s.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="form-section section" id="founders-form" aria-labelledby="form-heading">
+    <div class="section-label">Join now</div>
+    <h2 id="form-heading" class="section-title">Founding Member bano</h2>
+    <div style="max-width: 480px; margin: 0 auto;">
+      <form class="lead-form" id="founders-lead-form" action="#" method="POST" novalidate>
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">WhatsApp number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="10-digit mobile number"
+            required
+            pattern="[6-9][0-9]{9}"
+            inputmode="tel"
+            autocomplete="tel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="instagram">Instagram handle <span style="font-weight:400;color:var(--grey)">(optional)</span></label>
+          <input type="text" id="instagram" name="instagram" placeholder="@yourhandle" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="referral_code">Referral code <span style="font-weight:400;color:var(--grey)">(optional)</span></label>
+          <input type="text" id="referral_code" name="referral_code" placeholder="Got a code? e.g. AJAY50" autocomplete="off" />
+        </div>
+
+        <label class="checkbox-wrap">
+          <input type="checkbox" id="whatsapp_optin" name="whatsapp_optin" checked />
+          <span>Yes, add me to the Chicking Mohali WhatsApp Community</span>
+        </label>
+
+        <button type="submit" id="submit-btn">Join now — Abhi!</button>
+        <p class="form-note">Prizes are campaign mechanics only. T&Cs apply.</p>
+      </form>
+
+      <div class="success-box" id="success-box" role="status" aria-live="polite">
+        <h3>You're in! 🎉</h3>
+        <p>Welcome to the Founders Club. Ab apna code share karo, leaderboard pe chadho, aur bada prize jeeto.</p>
+        <p style="margin:.85rem 0 .3rem;font-size:.82rem;font-weight:600;color:#166534">Your referral code</p>
+        <div id="ref-code" style="font-family:var(--font-head);font-weight:800;font-size:1.5rem;letter-spacing:.08em;color:#15803d;background:#fff;border:1.5px dashed #86efac;border-radius:10px;padding:.6rem;margin-bottom:1rem">———</div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center">
+          <a id="share-wa" href="#" target="_blank" rel="noopener" style="background:#25d366;color:#fff;border-radius:9999px;padding:.75rem 1.3rem;font-weight:700;text-decoration:none;font-size:.92rem">Share on WhatsApp</a>
+          <button id="share-native" type="button" style="background:#0f0f0f;color:#fff;border:none;border-radius:9999px;padding:.75rem 1.3rem;font-weight:700;font-size:.92rem;cursor:pointer">Share…</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ladder-heading">
+    <div class="section-label">Refer & win</div>
+    <h2 id="ladder-heading" class="section-title">The more you share, the more you win</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon" aria-hidden="true">🍔</div><div><div class="benefit-title">Refer 3 friends</div><div class="benefit-desc">Free Crispy Chicken Burger voucher.</div></div></div>
+      <div class="benefit-card"><div class="benefit-icon" aria-hidden="true">🪣</div><div><div class="benefit-title">Refer 10 friends</div><div class="benefit-desc">Free Family Bucket, on us.</div></div></div>
+      <div class="benefit-card"><div class="benefit-icon" aria-hidden="true">💳</div><div><div class="benefit-title">Refer 25 friends</div><div class="benefit-desc">VIP Founders Card + a month of free meals.*</div></div></div>
+      <div class="benefit-card"><div class="benefit-icon" aria-hidden="true">👑</div><div><div class="benefit-title">Top referrer</div><div class="benefit-desc">Launch-day Hall of Fame mein top spot — crown tumhara.*</div></div></div>
+    </div>
+    <p class="sample-note" style="text-align:center">*Reward tiers are campaign mechanics. T&Cs apply.</p>
+  </section>
+
+  <section class="leaderboard-wrap section" aria-labelledby="leaderboard-heading">
+    <div class="section-label">Leaderboard</div>
+    <h2 id="leaderboard-heading" class="section-title">Top 10 Founders — Aaj kaun top pe?</h2>
+    <div class="table-wrap">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col" style="text-align:right">Referrals</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sampleLeaders.map((row, i) => (
+            <tr>
+              <td>{i + 1}</td>
+              <td>{row.name}</td>
+              <td>{row.phone}</td>
+              <td style="text-align:right">{row.count}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="sample-note">Sample — live leaderboard goes here at launch.</p>
+  </section>
+  </div>
+
+  <script define:vars={{ API_URL, WHATSAPP_FALLBACK, OPENING_DATE }}>
+    // Countdown to grand opening
+    const opening = new Date(OPENING_DATE).getTime();
+    const daysEl = document.getElementById('cd-days');
+    const hoursEl = document.getElementById('cd-hours');
+    const minutesEl = document.getElementById('cd-minutes');
+    const secondsEl = document.getElementById('cd-seconds');
+
+    function pad(n) { return n.toString().padStart(2, '0'); }
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = opening - now;
+      if (diff <= 0) {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = pad(days);
+      hoursEl.textContent = pad(hours);
+      minutesEl.textContent = pad(minutes);
+      secondsEl.textContent = pad(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Honest live scarcity: show the REAL founders count from the backend (no fake numbers)
+    fetch(`${API_URL}/api/leads/count?campaign=founders-club&type=b2c`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        const n = d && Number(d.count) || 0;
+        const el = document.getElementById('spots-cue-text');
+        if (el && n > 0) el.textContent = `${n} of 1,000 founding spots claimed`;
+      })
+      .catch(() => {});
+
+    // Viral loop: if arrived via a referral link (?ref=CODE), prefill the referral field
+    const refParam = new URLSearchParams(location.search).get('ref');
+    if (refParam) {
+      const rc = document.getElementById('referral_code');
+      if (rc) rc.value = refParam.toUpperCase().slice(0, 16);
+    }
+
+    // Generate a shareable referral code from the member's name
+    function makeRefCode(name) {
+      const base = (name || 'FOUNDER').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 6) || 'FOUNDER';
+      return base + Math.floor(100 + Math.random() * 900);
+    }
+
+    // Registration form handler
+    const form = document.getElementById('founders-lead-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successBox = document.getElementById('success-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Joining…';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+      const name = formData.get('name')?.toString().trim();
+      const phone = formData.get('phone')?.toString().trim();
+      const whatsappOptin = formData.get('whatsapp_optin') === 'on';
+      const instagram = formData.get('instagram')?.toString().trim() || '';
+      const referralCode = formData.get('referral_code')?.toString().trim() || '';
+
+      const payload = {
+        type: 'b2c',
+        name,
+        phone,
+        notes: JSON.stringify({
+          campaign: 'founders-club',
+          whatsapp_optin: whatsappOptin,
+          instagram,
+          referral_code: referralCode,
+        }),
+      };
+
+      try {
+        const res = await fetch(`${API_URL}/api/leads`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error(`Server responded ${res.status}`);
+        const data = await res.json().catch(() => ({}));
+
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Give the new member their server-issued shareable code + one-tap share (the viral loop)
+        const code = data.referral_code || makeRefCode(name);
+        document.getElementById('ref-code').textContent = code;
+        const shareUrl = `https://chicking-founders.pages.dev/founders/?ref=${encodeURIComponent(code)}`;
+        const shareMsg = `I just joined the Chicking Mohali Founders Club 🍗 Pehli visit pe free burger + secret deals sabse pehle. Code ${code} se join karo: ${shareUrl}`;
+        document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareMsg)}`;
+        const nativeBtn = document.getElementById('share-native');
+        if (navigator.share) {
+          nativeBtn.addEventListener('click', () => navigator.share({ title: 'Chicking Mohali Founders Club', text: shareMsg, url: shareUrl }).catch(() => {}));
+        } else {
+          nativeBtn.addEventListener('click', () => {
+            if (navigator.clipboard) navigator.clipboard.writeText(shareMsg);
+            nativeBtn.textContent = 'Copied!';
+          });
+        }
+      } catch (err) {
+        console.error('Lead submit failed:', err);
+        // Fallback to WhatsApp
+        window.location.href = WHATSAPP_FALLBACK;
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+
+  <style>
+    .founders-page {
+      --red: #BE1622;
+      --red-dark: #89181C;
+      --orange: #F39200;
+      --black: #0f0f0f;
+      --white: #fafafa;
+      --grey: #6b7280;
+      --border: #e5e7eb;
+      --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center;
+      padding: 1.5rem 1.25rem 3rem;
+      background: linear-gradient(160deg, #fff 0%, #fff4f4 100%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: .4rem 1rem;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 6px rgba(190,22,34,.08);
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 8vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 760px;
+      margin-bottom: .75rem;
+    }
+    .hero h1 span { color: var(--red); }
+    .hero-sub {
+      font-family: var(--font-head);
+      font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--black);
+      max-width: 560px;
+      margin-bottom: .5rem;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.4vw, 1.15rem);
+      color: var(--grey);
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      padding: .9rem 1.8rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-head);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 200ms, transform 150ms, box-shadow 200ms;
+      box-shadow: 0 4px 24px rgba(190,22,34,.3);
+      min-height: 48px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(190,22,34,.35); }
+    .hero img {
+      max-width: min(940px, 100%);
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(190,22,34,.18);
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 640px) {
+      .hero img {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        object-position: 72% center;
+      }
+    }
+
+    /* STATS */
+    .stats {
+      background: var(--red-dark);
+      color: #fff;
+      padding: 2.5rem 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 1rem;
+      text-align: center;
+    }
+    .stat-n {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .stat-label { font-size: .85rem; opacity: .85; text-transform: uppercase; letter-spacing: .05em; }
+
+    /* SECTIONS */
+    .section { padding: 4rem 1.25rem; max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 2rem;
+      letter-spacing: -.02em;
+    }
+
+    /* COUNTDOWN */
+    .countdown-wrap {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.25rem;
+      text-align: center;
+    }
+    .countdown-grid {
+      display: inline-grid;
+      grid-template-columns: repeat(4, minmax(60px, 1fr));
+      gap: .5rem;
+      max-width: 100%;
+    }
+    @media (min-width: 400px) {
+      .countdown-grid {
+        grid-template-columns: repeat(4, minmax(64px, 1fr));
+        gap: .75rem;
+      }
+    }
+    .countdown-item {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: .75rem .25rem;
+      min-width: 60px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.04);
+    }
+    @media (min-width: 400px) {
+      .countdown-item { padding: 1rem .5rem; min-width: 72px; }
+    }
+    .countdown-number {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 6vw, 2.8rem);
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    @media (min-width: 400px) {
+      .countdown-number { font-size: clamp(2rem, 7vw, 3rem); }
+    }
+    .countdown-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--grey); }
+
+    /* BENEFITS */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+    .benefit-card {
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 200ms, box-shadow 200ms, transform 150ms;
+    }
+    .benefit-card:hover,
+    .benefit-card:focus-visible { border-color: var(--red); box-shadow: 0 4px 20px rgba(190,22,34,.1); transform: translateY(-2px); }
+    .benefit-icon {
+      flex: 0 0 44px;
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      background: #fff4f4;
+      border-radius: 12px;
+      font-size: 1.4rem;
+    }
+    .benefit-title { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; margin-bottom: .25rem; }
+    .benefit-desc { font-size: .9rem; color: var(--grey); }
+    .tcs { font-size: .7rem; color: var(--grey); display: block; margin-top: .35rem; }
+
+    /* STEPS */
+    .steps-wrap { background: #fff4f4; border-top: 1px solid #fce4e4; }
+    .steps-list { display: grid; gap: 1.25rem; }
+    .step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+    .step-number {
+      flex: 0 0 40px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-head);
+      font-weight: 800;
+      display: grid; place-items: center;
+    }
+    .step-title { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; margin-bottom: .2rem; }
+    .step-desc { font-size: .9rem; color: var(--grey); }
+
+    /* FORM */
+    .form-section { background: #fff; }
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      text-align: left;
+    }
+    .form-group { display: flex; flex-direction: column; gap: .35rem; }
+    .form-group label { font-size: .85rem; font-weight: 600; }
+    .form-group input[type="text"],
+    .form-group input[type="tel"] {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      background: #fff;
+      transition: border-color 200ms, box-shadow 200ms;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(190,22,34,.12);
+    }
+    .checkbox-wrap {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .9rem; color: var(--black);
+      cursor: pointer;
+    }
+    .checkbox-wrap input {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      accent-color: var(--red);
+      margin-top: 0;
+    }
+    .lead-form button {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      padding: .95rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-head);
+      cursor: pointer;
+      transition: background 200ms, transform 150ms;
+      min-height: 50px;
+    }
+    .lead-form button:hover,
+    .lead-form button:focus-visible { background: var(--red-dark); }
+    .lead-form button:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+    .form-note { font-size: .8rem; color: var(--grey); margin-top: .5rem; text-align: center; }
+    .success-box {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .success-box h3 { font-family: var(--font-head); font-size: 1.25rem; color: #15803d; margin-bottom: .5rem; }
+    .success-box p { color: #166534; }
+
+    /* LEADERBOARD */
+    .leaderboard-wrap { background: #f8f8f8; border-top: 1px solid var(--border); }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .leaderboard-table {
+      table-layout: fixed;
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      min-width: 320px;
+    }
+    .leaderboard-table th,
+    .leaderboard-table td {
+      padding: .85rem 1rem;
+      text-align: left;
+      font-size: .9rem;
+      border-bottom: 1px solid var(--border);
+      word-wrap: break-word;
+    }
+    .leaderboard-table th {
+      background: var(--red-dark);
+      color: #fff;
+      font-family: var(--font-head);
+      font-weight: 700;
+    }
+    .leaderboard-table tr:last-child td { border-bottom: none; }
+    .sample-note { font-size: .8rem; color: var(--grey); margin-top: .75rem; }
+  </style>
+</Layout>

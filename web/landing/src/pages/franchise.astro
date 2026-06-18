@@ -1,0 +1,470 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://chicking-api.cvchaudhary.workers.dev';
+
+const title = 'Chicking Franchise — Punjab \u0026 Mohali';
+const description = 'Own a Chicking franchise in Punjab. 475+ outlets, 45 countries, 25 years of QSR mastery. Enquire now — our team calls within 24 hours.';
+---
+
+<Layout title={title} description={description} page="franchise">
+  <section class="franchise-hero">
+    <div class="hero-badge">Franchise Opportunity — Mohali · First in North India</div>
+    <h1>Bring Chicking to Punjab. <em>Own the territory.</em></h1>
+    <p>475+ outlets. 45 countries. 25 years of QSR mastery. Punjab's franchise journey begins in Mohali — and you can lead it.</p>
+
+    <div class="pills">
+      <div class="pill"><span>475+</span> Outlets Worldwide</div>
+      <div class="pill"><span>45</span> Countries</div>
+      <div class="pill"><span>25</span> Years of QSR Mastery</div>
+      <div class="pill"><span>₹60L+</span> Investment</div>
+      <div class="pill">FOFO & FOCO Options</div>
+      <div class="pill">Full Operations Support</div>
+    </div>
+
+    <a class="hero-cta" href="#enquire">Express your interest</a>
+  </section>
+
+  <div class="support-strip">
+    <div class="support-item">
+      <h3>Pre-Opening</h3>
+      <p>Site selection, layout planning, centralised HQ training, and on-ground launch support.</p>
+    </div>
+    <div class="support-item">
+      <h3>Operations</h3>
+      <p>Ongoing ops audits, refresher training, and performance monitoring — with dedicated WhatsApp support.</p>
+    </div>
+    <div class="support-item">
+      <h3>Marketing</h3>
+      <p>National brand campaigns funded by HQ, local area marketing fund, festive season campaigns designed and printed.</p>
+    </div>
+  </div>
+
+  <section class="flyer-section">
+    <h2>The investment at a glance</h2>
+    <p>FOFO & FOCO models — straight numbers, no guesswork.</p>
+    <img
+      src="/images/chicking-investment-flyer.jpg"
+      alt="Chicking franchise investment overview — FOFO and FOCO models, investment structure, and operational support"
+      class="flyer-img"
+      loading="lazy"
+      width="640"
+      height="900"
+    />
+    <a class="flyer-cta" href="#enquire">Sahi choice. Let's talk →</a>
+  </section>
+
+  <section class="form-section" id="enquire">
+    <div class="form-header">
+      <h2>Enquire now — our team calls within 24 hours, pakka.</h2>
+      <p>One form. No commitment. We’ll walk you through every detail.</p>
+    </div>
+
+    <form id="franchise-form" novalidate>
+      <div>
+        <label class="field-label" for="f-name">Full Name <span class="req">*</span></label>
+        <input id="f-name" type="text" name="name" placeholder="Your full name" required autocomplete="name" />
+      </div>
+
+      <div>
+        <label class="field-label" for="f-phone">WhatsApp Number <span class="req">*</span></label>
+        <input id="f-phone" type="tel" name="phone" placeholder="10-digit mobile number" required
+          pattern="[6-9][0-9]{9}" inputmode="tel" autocomplete="tel" />
+      </div>
+
+      <div>
+        <label class="field-label" for="f-email">Email Address <span class="req">*</span></label>
+        <input id="f-email" type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+      </div>
+
+      <div>
+        <label class="field-label" for="f-city">City / Location you're interested in <span class="req">*</span></label>
+        <input id="f-city" type="text" name="city" placeholder="e.g. Mohali, Chandigarh, Ludhiana" required />
+      </div>
+
+      <div>
+        <label class="field-label" for="f-property">Do you have a property or location in mind?</label>
+        <select id="f-property" name="property">
+          <option value="" disabled selected>Select an option</option>
+          <option value="own">Yes — I own or lease a commercial space</option>
+          <option value="identified">Yes — I have a location in mind</option>
+          <option value="looking">No — I need help finding the right site</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="field-label" for="f-format">Preferred outlet format</label>
+        <select id="f-format" name="format">
+          <option value="" disabled selected>Select a format</option>
+          <option value="food-court">Food Court (500–700 sq ft)</option>
+          <option value="dine-in">Dine-in Restaurant (1,000+ sq ft)</option>
+          <option value="flexible">I'm flexible — advise me</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="field-label" for="f-investment">Investment capacity <span class="req">*</span></label>
+        <select id="f-investment" name="investment" required>
+          <option value="" disabled selected>Select your range</option>
+          <option value="60-75L">₹60L – ₹75L</option>
+          <option value="75L-1Cr">₹75L – ₹1 Crore</option>
+          <option value="1Cr+">₹1 Crore+</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="field-label" for="f-background">About you <span style="font-weight:400;color:var(--grey)">(optional)</span></label>
+        <textarea id="f-background" name="background" placeholder="Brief background — current business, profession, or why you're interested in Chicking" maxlength="300"></textarea>
+      </div>
+
+      <div>
+        <label class="field-label" for="f-experience">Have you run a restaurant or retail business before?</label>
+        <select id="f-experience" name="experience">
+          <option value="" disabled selected>Select an option</option>
+          <option value="yes-food">Yes — food / restaurant</option>
+          <option value="yes-retail">Yes — retail / other business</option>
+          <option value="no">No — this would be my first venture</option>
+        </select>
+      </div>
+
+      <div class="consent-row">
+        <input type="checkbox" id="consent" name="consent" required />
+        <label for="consent">
+          I confirm I have read the disclaimer below and consent to Trinity Foods International LLP (operator of Chicking Mohali) contacting me about this franchise enquiry.
+          My data will be used solely for this purpose. I can withdraw consent at any time by emailing
+          <a href="mailto:franchise@rudradigital.uk">franchise@rudradigital.uk</a>.
+        </label>
+      </div>
+
+      <button class="submit-btn" type="submit" id="submit-btn">Send Franchise Enquiry</button>
+      <p class="form-note">Call within 24 hours. No spam, ever. Pakka.</p>
+    </form>
+  </section>
+
+  <section class="disclaimer-section">
+    <div class="disclaimer-box">
+      <p><strong>Disclaimer</strong></p>
+      <p>By submitting this form, you consent to Trinity Foods International LLP (operator of the Chicking Mohali franchise) collecting and using your name, phone number, email, city, and investment range for the sole purpose of responding to your franchise enquiry. This is not a franchise offer, prospectus, or investment solicitation. No financial returns, profits, or business outcomes are guaranteed. Submitting this form does not create any legal or contractual obligation on either party. Your data will not be shared with third parties for marketing purposes.</p>
+      <p>To withdraw your consent or request deletion of your data, email <a href="mailto:franchise@rudradigital.uk">franchise@rudradigital.uk</a> or use our <a href="/data-request">Data Request</a> page. Full details in our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.</p>
+    </div>
+  </section>
+
+  <script define:vars={{ API_URL }}>
+    const form = document.getElementById('franchise-form');
+    const btn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const consent = form.querySelector('#consent');
+      if (!consent.checked) {
+        consent.closest('.consent-row').style.borderColor = '#BE1622';
+        consent.closest('.consent-row').style.background = '#fff4f4';
+        return;
+      }
+
+      const original = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const fd = new FormData(form);
+        const data = Object.fromEntries(fd);
+        data.type = 'b2b';
+
+        // Pack extra fields into notes so the existing schema captures them
+        data.notes = JSON.stringify({
+          email:      data.email      || '',
+          property:   data.property   || '',
+          format:     data.format     || '',
+          background: data.background || '',
+          experience: data.experience || '',
+        });
+
+        const res = await fetch(`${API_URL}/api/leads`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!res.ok) throw new Error('Server error');
+
+        btn.textContent = '✓ Got it, yaar! Our team will call within 24 hours.';
+        btn.style.background = '#166534';
+        form.reset();
+      } catch {
+        btn.textContent = 'Something went wrong — WhatsApp us instead.';
+        btn.disabled = false;
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.background = '';
+        }, 4000);
+      }
+    });
+  </script>
+
+  <style>
+
+    /* ── HERO ── */
+    .franchise-hero {
+      background: var(--chicking-maroon);
+      color: var(--white);
+      padding: 3.5rem 1.25rem 3rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 9999px;
+      padding: .3rem 1rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--chicking-yellow);
+      margin-bottom: 1.5rem;
+    }
+    .franchise-hero h1 {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      max-width: 620px;
+      margin: 0 auto 1rem;
+    }
+    .franchise-hero h1 em { font-style: normal; color: var(--chicking-yellow); }
+    .franchise-hero p {
+      font-size: clamp(.95rem, 2.5vw, 1.1rem);
+      opacity: .8;
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .pill {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 9999px;
+      padding: .45rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .pill span { color: var(--chicking-yellow); }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      background: var(--chicking-orange);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 9999px;
+      padding: .75rem 2rem;
+      text-decoration: none;
+      transition: opacity 150ms, transform 150ms;
+    }
+    .hero-cta:hover,
+    .hero-cta:focus-visible { opacity: .9; transform: translateY(-1px); }
+
+    /* ── SUPPORT STRIP ── */
+    .support-strip {
+      background: var(--chicking-red);
+      color: var(--white);
+      padding: 1.75rem 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      text-align: center;
+    }
+    @media (min-width: 640px) { .support-strip { grid-template-columns: repeat(3, 1fr); } }
+    .support-item h3 {
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .35rem;
+    }
+    .support-item p { font-size: .8rem; opacity: .85; line-height: 1.5; }
+
+    /* ── FORM SECTION ── */
+    .form-section {
+      background: var(--white);
+      padding: 3rem 1.25rem 4rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .form-header { text-align: center; margin-bottom: 2rem; }
+    .form-header h2 {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 800;
+      margin-bottom: .5rem;
+      letter-spacing: -.02em;
+    }
+    .form-header p { color: var(--grey); font-size: .95rem; }
+
+    form { display: flex; flex-direction: column; gap: .75rem; }
+
+    .field-label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: .3rem;
+      letter-spacing: .03em;
+    }
+    .field-label .req { color: var(--chicking-red); margin-left: 2px; }
+
+    input:not([type="checkbox"]), select, textarea {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--ink);
+      transition: border-color 200ms, background 200ms, box-shadow 200ms;
+      -webkit-appearance: none;
+    }
+    input:not([type="checkbox"]):focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--chicking-red);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(190,22,34,.12);
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      padding: .75rem 1rem;
+      background: #f9f9f9;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-top: .25rem;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--chicking-red);
+      cursor: pointer;
+      padding: 0;
+      border-radius: 4px;
+    }
+    .consent-row label {
+      font-size: .8rem;
+      color: var(--grey);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+    .consent-row label a { color: var(--chicking-red); text-decoration: underline; }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--chicking-maroon);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background 200ms, transform 150ms;
+      margin-top: .25rem;
+      min-height: 48px;
+    }
+    .submit-btn:hover,
+    .submit-btn:focus-visible { background: var(--chicking-red); transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      text-align: center;
+      font-size: .78rem;
+      color: var(--grey);
+      margin-top: .25rem;
+    }
+
+    /* ── INVESTMENT FLYER ── */
+    .flyer-section {
+      background: #f5f5f5;
+      padding: 3rem 1.25rem;
+      text-align: center;
+    }
+    .flyer-section h2 {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: .5rem;
+    }
+    .flyer-section p {
+      font-size: .95rem;
+      color: var(--grey);
+      margin-bottom: 2rem;
+    }
+    .flyer-img {
+      width: 100%;
+      max-width: 640px;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.15);
+      display: block;
+      margin: 0 auto 1.75rem;
+    }
+    .flyer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      background: var(--chicking-red);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .95rem;
+      padding: .85rem 2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 200ms, transform 150ms;
+      box-shadow: 0 4px 16px rgba(190,22,34,.3);
+    }
+    .flyer-cta:hover,
+    .flyer-cta:focus-visible { background: var(--chicking-maroon); transform: translateY(-1px); }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer-section {
+      background: var(--ink);
+      color: #9ca3af;
+      padding: 2rem 1.25rem;
+      font-size: .75rem;
+      line-height: 1.7;
+    }
+    .disclaimer-box {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px;
+      background: rgba(255,255,255,.03);
+    }
+    .disclaimer-box p { margin-bottom: .5rem; }
+    .disclaimer-box p:last-child { margin-bottom: 0; }
+    .disclaimer-box a { color: var(--chicking-yellow); text-decoration: none; }
+    .disclaimer-box a:hover { text-decoration: underline; }
+  </style>
+</Layout>

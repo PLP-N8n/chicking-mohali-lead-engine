@@ -1,0 +1,424 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Carousel Copy — Chicking Mohali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --red: #BE1622;
+        --dark: #111827;
+        --mid: #374151;
+        --light: #6b7280;
+        --border: #e5e7eb;
+        --bg: #f9fafb;
+        --white: #ffffff;
+        --font: 'Montserrat', system-ui, sans-serif;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: var(--font); background: var(--bg); color: var(--dark); font-size: 15px; line-height: 1.6; }
+
+      .page-header {
+        background: var(--red);
+        color: var(--white);
+        padding: 20px 16px;
+        text-align: center;
+      }
+      .page-header h1 { font-size: 18px; font-weight: 800; letter-spacing: 0.02em; }
+      .page-header p { font-size: 12px; opacity: 0.85; margin-top: 4px; }
+
+      .toc {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 12px 16px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .toc a {
+        background: var(--red);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+      }
+
+      .campaign {
+        max-width: 720px;
+        margin: 24px auto;
+        padding: 0 12px;
+      }
+      .campaign-title {
+        background: var(--dark);
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .slide {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-top: none;
+        padding: 16px;
+      }
+      .slide:last-child { border-radius: 0 0 8px 8px; }
+      .slide + .slide { border-top: none; }
+
+      .slide-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--red);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+      }
+      .slide h3 {
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 6px;
+        line-height: 1.35;
+      }
+      .slide p, .slide li {
+        font-size: 14px;
+        color: var(--mid);
+        line-height: 1.6;
+        margin-bottom: 6px;
+      }
+      .slide ul { padding-left: 18px; margin-bottom: 8px; }
+
+      .ab-block {
+        background: #f3f4f6;
+        border-left: 3px solid var(--red);
+        border-radius: 0 6px 6px 0;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+      }
+      .ab-label { font-size: 11px; font-weight: 700; color: var(--red); margin-bottom: 4px; }
+      .ab-block .headline { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 3px; }
+      .ab-block .subline { font-size: 13px; color: var(--mid); }
+
+      .visual-note {
+        font-size: 12px;
+        color: var(--light);
+        font-style: italic;
+        background: #f9fafb;
+        padding: 6px 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .cta-box {
+        background: var(--dark);
+        color: var(--white);
+        border-radius: 6px;
+        padding: 12px 14px;
+        margin-top: 10px;
+      }
+      .cta-box .cta-label { font-size: 11px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+      .cta-box .cta-text { font-size: 14px; font-weight: 700; }
+      .cta-box a { color: #F39200; }
+
+      .placeholder { color: var(--red); font-weight: 700; }
+
+      .caption-block {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-radius: 6px;
+        padding: 14px;
+        margin-top: 4px;
+      }
+      .caption-block .cap-label { font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+      .caption-block p { font-size: 14px; color: var(--dark); }
+
+      .hashtag-block {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 6px;
+        padding: 12px 14px;
+        margin-top: 4px;
+      }
+      .hashtag-block .ht-label { font-size: 11px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+      .hashtag-block p { font-size: 13px; color: #1e40af; line-height: 1.8; }
+
+      .compliance-note {
+        font-size: 12px;
+        color: #059669;
+        font-weight: 600;
+        background: #d1fae5;
+        padding: 8px 12px;
+        border-radius: 4px;
+        margin-top: 8px;
+      }
+
+      .divider { height: 32px; }
+    </style>
+  </head>
+  <body>
+
+    <div class="page-header">
+      <h1>Instagram Carousel Copy — Chicking Mohali</h1>
+      <p>Prepared by Gayatri · Rudra Digital · 10 June 2026 · Internal use only</p>
+    </div>
+
+    <div class="toc">
+      <a href="#campaign1">Campaign 1: Store Opening</a>
+      <a href="#campaign2">Campaign 2: Franchise Acquisition</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CAMPAIGN 1 -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <div class="campaign" id="campaign1">
+      <div class="campaign-title">Campaign 1 — New Store Opening Announcement · 7 Slides</div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 1 — Hook (2 A/B variants)</div>
+        <div class="visual-note">Visual: Bold full-bleed warm yellow/red background. Large Chicking logo + "MOHALI" in giant type. Minimal text, maximum impact.</div>
+        <div class="ab-block">
+          <div class="ab-label">Variant A — English-first</div>
+          <div class="headline">Mohali's Most-Awaited Fried Chicken Is Here.</div>
+          <div class="subline">Sector 62, Mohali is officially on the map.</div>
+        </div>
+        <div class="ab-block">
+          <div class="ab-label">Variant B — Punjabi hook</div>
+          <div class="headline">Aa gaya, Mohali.</div>
+          <div class="subline">Chicking lands in Sector 62. Nothing will taste the same again.</div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 2 — What Is Chicking?</div>
+        <div class="visual-note">Visual: Photo of busy Chicking outlet. Overlay text on semi-transparent dark panel.</div>
+        <h3>Not just fried chicken. A whole experience.</h3>
+        <p>Chicking is a globally proven fried chicken QSR — 475+ outlets, 45 countries, 25 years of getting it right.</p>
+        <p>Every piece is marinated, fried to order, and served fast. No shortcuts, no compromises.</p>
+        <p>The world has had Chicking for decades. Mohali gets it now — <strong>first in North India.</strong></p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 3 — Menu Hero</div>
+        <div class="visual-note">Visual: Close-up hero shot of signature crispy fried chicken — glistening, golden, steam rising. Dark background.</div>
+        <h3>The crunch you've been waiting for.</h3>
+        <p>Our signature crispy fried chicken. Marinated. Perfectly seasoned. Fried fresh.</p>
+        <p>Pair it with our loaded fries, sauces that actually hit — and something cold.</p>
+        <p>This is what fried chicken in Mohali was missing.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 4 — Location Reveal</div>
+        <div class="visual-note">Visual: Map graphic with Sector 62, Mohali pinned. Or outlet exterior photo.</div>
+        <h3>We're in Sector 62, Mohali.</h3>
+        <p>Right in the heart of the action — easy to reach from Chandigarh, Panchkula, and Phase 5–11.</p>
+        <p>Opening: <span class="placeholder">[OPENING DATE TO CONFIRM]</span></p>
+        <p>Mark your calendar. Tell your people.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 5 — Grand Opening Offer</div>
+        <div class="visual-note">Visual: Festive red/gold design. Bold offer text front and centre.</div>
+        <h3>Grand Opening. Special for the first ones in.</h3>
+        <p><span class="placeholder">[GRAND OPENING OFFER TO CONFIRM WITH BRAND TEAM]</span></p>
+        <p>First <span class="placeholder">[X]</span> customers each day get <span class="placeholder">[OFFER]</span>.</p>
+        <p>Valid <span class="placeholder">[DATES]</span>. Dine-in only / Delivery included — <span class="placeholder">[TO CONFIRM]</span>.</p>
+        <p>Be there. Be loud about it.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 6 — Social Proof</div>
+        <div class="visual-note">Visual: Chicking outlet photos from international markets. "475+" as bold anchor stat. "North India's First" as the punchline.</div>
+        <h3>475+ outlets. 45 countries. 25 years.<br>North India's turn starts here.</h3>
+        <p>Chicking has built its name across the globe — the Middle East, South Asia, and beyond.</p>
+        <p>Consistent quality. A brand that's earned its reputation one crispy piece at a time.</p>
+        <p>Sector 62, Mohali is the <strong>first Chicking in all of North India</strong>. This is the beginning.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 7 — CTA</div>
+        <div class="visual-note">Visual: Clean, high-contrast CTA card. Chicking logo. Single action. Bright background.</div>
+        <h3>Come find us. Bring everyone.</h3>
+        <p>Chicking Mohali — Sector 62</p>
+        <p><strong>Follow</strong> @chickingmohali for updates, offers, and opening day.</p>
+        <p><strong>Tag a friend</strong> who needs to know about this.</p>
+        <div class="cta-box">
+          <div class="cta-label">CTA Button</div>
+          <div class="cta-text">Find Us on Google Maps → <span class="placeholder">[MAPS LINK TO CONFIRM]</span></div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Caption</div>
+        <div class="caption-block">
+          <div class="cap-label">Post Caption (150 words max)</div>
+          <p>Mohali, your wait is over.<br><br>
+          Chicking — a global QSR brand, 475+ outlets, 45 countries — is opening its FIRST North India outlet in Sector 62, Mohali.<br><br>
+          25 years. One consistent obsession: perfect fried chicken.<br><br>
+          Grand opening: <span class="placeholder">[DATE TO CONFIRM]</span> | Sector 62, Mohali.<br><br>
+          Follow for updates. Tag someone who needs to know. Drop a 🔥 if you're ready.<br><br>
+          👉 Find us: <span class="placeholder">[MAPS LINK TO CONFIRM]</span></p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Hashtag Bank (use 15–20)</div>
+        <div class="hashtag-block">
+          <div class="ht-label">Recommended 15</div>
+          <p>#Mohali #ChickingMohali #FriedChicken #ChandigarhFood #Sector62Mohali #GrandOpening #Punjab #FriedChickenPunjab #CrispyChicken #MohaliFood #TriCity #Chicking #NowOpenMohali #PremiumFastFood #ChandigarhFoodie</p>
+        </div>
+      </div>
+
+    </div><!-- /campaign1 -->
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CAMPAIGN 2 -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <div class="campaign" id="campaign2">
+      <div class="campaign-title">Campaign 2 — Franchise Acquisition · 8 Slides</div>
+
+      <div class="slide">
+        <div class="compliance-note">✓ Meta + SEBI FUTP compliant — no earnings projections, no payback period, no ROI figures. Investment ₹60L+ and royalty 6% stated as confirmed facts only.</div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 1 — Hook (2 A/B variants)</div>
+        <div class="visual-note">Visual: Dark premium background — deep navy or black. White/gold text. Corporate tone, not consumer.</div>
+        <div class="ab-block">
+          <div class="ab-label">Variant A — FOCO angle</div>
+          <div class="headline">You invest. We operate. You own.</div>
+          <div class="subline">The Chicking FOCO franchise model — now available in North India.</div>
+        </div>
+        <div class="ab-block">
+          <div class="ab-label">Variant B — Opportunity framing</div>
+          <div class="headline">North India's QSR gap is still open. Not for long.</div>
+          <div class="subline">Chicking is expanding. This is what a ground-floor opportunity in premium fried chicken looks like.</div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 2 — What FOCO Means</div>
+        <div class="visual-note">Visual: Clean two-column "YOUR ROLE / OUR ROLE" split design. Structured, confident.</div>
+        <h3>FOCO: The model built for serious investors.</h3>
+        <p><strong>Your role:</strong></p>
+        <ul>
+          <li>Provide the capital to establish the outlet</li>
+          <li>Own the franchise rights for your territory</li>
+        </ul>
+        <p><strong>Our role:</strong></p>
+        <ul>
+          <li>Hire and train the full team</li>
+          <li>Run daily operations end-to-end</li>
+          <li>Manage quality, supply chain, delivery platforms</li>
+          <li>Handle everything from opening to closing</li>
+        </ul>
+        <p>You bring the investment. Trinity Foods International LLP brings the operations. Clean. Structured. Accountable.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 3 — Why Chicking, Why Now</div>
+        <div class="visual-note">Visual: World map with Chicking's international presence. "475+ outlets. 45 countries. 25 years." as anchor. "North India: Ground Floor" as the punch.</div>
+        <h3>475+ outlets. 45 countries. 25 years of QSR.<br>North India: ground floor.</h3>
+        <p>Chicking isn't a startup bet. It's a globally proven QSR brand — 25 years operating across the Middle East, South Asia, and beyond.</p>
+        <p>North India is an untapped territory. Mohali is <strong>outlet #1</strong>. The pipeline across Punjab, Delhi NCR, Haryana, UP, Rajasthan, and HP is wide open.</p>
+        <p>The brand is proven. The market is ready. The investors who move now own the territory.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 4 — Why Punjab Specifically</div>
+        <div class="visual-note">Visual: Punjab city skyline/aerial. Bold map pin on Punjab. Premium, investment-deck aesthetic.</div>
+        <h3>Punjab: First-mover advantage, right now.</h3>
+        <p>Chandigarh tricity is one of India's fastest-growing food delivery markets outside the top 4 metros.</p>
+        <p>Mohali Sector 62 is already under development. Amritsar, Ludhiana, Jalandhar — significant white space in premium QSR remains.</p>
+        <p>The investor who moves in 2026 owns the territory while others are still watching. That window does not stay open indefinitely.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 5 — The Investment (Numbers only — no projections)</div>
+        <div class="visual-note">Visual: Clean investment-deck layout. Two key facts in large type. No charts, no return graphs. Text only.</div>
+        <h3>The investment structure, plainly stated.</h3>
+        <p><strong>Minimum investment: ₹60 Lakhs+</strong><br>Capital required to establish the outlet — fit-out, equipment, working capital.</p>
+        <p><strong>Royalty: 6% of net sales + applicable taxes</strong><br>Confirmed structure. Payable to Trinity Foods International LLP.</p>
+        <p><strong>Territory:</strong> You hold exclusive rights to your location within the franchise agreement.</p>
+        <p><strong>Operations:</strong> 100% managed by Trinity Foods International LLP post-handover.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 6 — Who We're Looking For</div>
+        <div class="visual-note">Visual: Professional photo — business person, boardroom or site visit. Direct eye contact. Caption overlay.</div>
+        <h3>The Chicking franchise is not for everyone. It's for the right few.</h3>
+        <p>We partner with investors who bring:</p>
+        <ul>
+          <li><strong>Capital readiness:</strong> ₹60L+ available for deployment</li>
+          <li><strong>Business mindset:</strong> You think in markets, not menus</li>
+          <li><strong>F&B or operational experience:</strong> Hotel, restaurant, retail chain, FMCG, or franchise background preferred</li>
+          <li><strong>Territory conviction:</strong> You know your city. You've seen the gap.</li>
+        </ul>
+        <p>If that's you, we have a structured process. Let's talk.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 7 — What Happens After You Enquire</div>
+        <div class="visual-note">Visual: Clean numbered 4-step process flow. Arrow or timeline graphic. Premium, not salesy.</div>
+        <h3>Your enquiry triggers a premium onboarding process.</h3>
+        <p><strong>Step 1 — Submit the form</strong><br>2-minute franchise enquiry form. Location, background, investment capacity.</p>
+        <p><strong>Step 2 — Your personalised location intelligence report</strong><br>Within 24–48 hours, you receive an AI-generated report: competitor density, footfall indicators, site viability score for your proposed location.</p>
+        <p><strong>Step 3 — Discovery call with Aj Kumar</strong><br>CEO, Trinity Foods International LLP. Structured 30-minute call. No hard sell. Real due diligence from both sides.</p>
+        <p><strong>Step 4 — LOI and next steps</strong><br>If there's alignment, we move to Letter of Intent and site confirmation.</p>
+        <p><em>This is not a franchise broker process. This is how serious investors get treated.</em></p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Slide 8 — CTA</div>
+        <div class="visual-note">Visual: Single bold CTA. Clean dark background. White headline. One button/arrow graphic. No clutter.</div>
+        <h3>If you're ready to own a Chicking franchise in North India —</h3>
+        <p>Fill the franchise enquiry form. We'll send your personalised location report within 48 hours.</p>
+        <div class="cta-box">
+          <div class="cta-label">CTA Button</div>
+          <div class="cta-text"><a href="https://chicking-mohali.pages.dev/franchise">Apply for Franchise → chicking-mohali.pages.dev/franchise</a></div>
+        </div>
+        <p style="margin-top:10px; font-size:13px; color:#6b7280;"><em>Aj | CEO, Trinity Foods International LLP</em></p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Caption</div>
+        <div class="caption-block">
+          <div class="cap-label">Post Caption (100 words max · Professional tone)</div>
+          <p>The Chicking FOCO franchise is open for serious investors across North India.<br><br>
+          Investment starts at ₹60L. Royalty: 6% of net sales + applicable taxes.<br><br>
+          You invest. We operate. You own the territory.<br><br>
+          Mohali is Chicking's first outlet in North India. Ground floor of a 475+ outlet global brand entering a new market.<br><br>
+          The franchise pipeline is open — but we partner selectively.<br><br>
+          Apply here: https://chicking-mohali.pages.dev/franchise<br><br>
+          Aj | CEO, Trinity Foods International LLP</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-label">Hashtag Bank (use 15)</div>
+        <div class="hashtag-block">
+          <div class="ht-label">Recommended 15</div>
+          <p>#FranchiseIndia #QSRFranchise #FoodFranchise #FranchisePunjab #Chicking #ChickingFranchise #FOCO #BusinessOpportunityIndia #FoodBusiness #QSRIndia #FranchiseChandigarh #NorthIndiaFranchise #PunjabBusiness #InvestInFood #FranchiseBusiness</p>
+        </div>
+      </div>
+
+    </div><!-- /campaign2 -->
+
+    <div style="text-align:center; padding: 24px 16px; font-size:11px; color:#9ca3af;">
+      Gayatri · Rudra Digital · Internal use only · Do not share publicly
+    </div>
+
+  </body>
+</html>

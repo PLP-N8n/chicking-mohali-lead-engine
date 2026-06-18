@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Data Request — Chicking Mohali';
+const description = 'Request access to, correction of, or deletion of your personal data held by Chicking Mohali (Trinity Foods International LLP) under India’s DPDP Act, 2023.';
+const REQUEST_EMAIL = 'franchise@rudradigital.uk';
+---
+
+<Layout title={title} description={description}>
+  <section class="section legal">
+    <p class="section-label">Your data, your control</p>
+    <h1 class="section-title">Data Request</h1>
+
+    <p>Under India’s Digital Personal Data Protection Act, 2023, you can ask us to <strong>access</strong>,
+    <strong>correct</strong>, or <strong>delete</strong> the personal data we hold about you, or to
+    <strong>withdraw your consent</strong> to its use. Use the form below to send us a request — it opens a
+    pre-filled email in your mail app. You can also email us directly at
+    <a href={`mailto:${REQUEST_EMAIL}`}>{REQUEST_EMAIL}</a>.</p>
+
+    <form id="dr-form" class="dr-form">
+      <label>
+        Your name
+        <input type="text" id="dr-name" name="name" required autocomplete="name" />
+      </label>
+      <label>
+        Phone or email you used
+        <input type="text" id="dr-contact" name="contact" required placeholder="The phone/email on your enquiry" />
+      </label>
+      <label>
+        What would you like us to do?
+        <select id="dr-type" name="type" required>
+          <option value="Access my data">Access my data</option>
+          <option value="Correct my data">Correct my data</option>
+          <option value="Delete my data">Delete my data</option>
+          <option value="Withdraw my consent">Withdraw my consent</option>
+        </select>
+      </label>
+      <label>
+        Anything else? (optional)
+        <textarea id="dr-notes" name="notes" rows="3"></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary">Send request</button>
+      <p class="form-note">We’ll acknowledge your request and action it within a reasonable period.</p>
+    </form>
+
+    <p class="legal-note">For full details on how we handle your data, see our
+    <a href="/privacy">Privacy Policy</a>.</p>
+  </section>
+
+  <script define:vars={{ REQUEST_EMAIL }}>
+    const form = document.getElementById('dr-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('dr-name').value.trim();
+      const contact = document.getElementById('dr-contact').value.trim();
+      const type = document.getElementById('dr-type').value;
+      const notes = document.getElementById('dr-notes').value.trim();
+      const subject = `Data request: ${type}`;
+      const body =
+        `Name: ${name}\n` +
+        `Contact on file: ${contact}\n` +
+        `Request: ${type}\n` +
+        (notes ? `Notes: ${notes}\n` : '') +
+        `\n(Sent from the Chicking Mohali Data Request page.)`;
+      window.location.href =
+        `mailto:${REQUEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+
+  <style>
+    .legal { max-width: 640px; }
+    .legal p { color: #374151; }
+    .legal a { color: var(--chicking-red); text-decoration: underline; }
+    .dr-form { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0 1rem; }
+    .dr-form label { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; font-size: 0.9rem; }
+    .dr-form input, .dr-form select, .dr-form textarea {
+      font: inherit; font-weight: 400; padding: 0.7rem 0.85rem;
+      border: 1.5px solid var(--border); border-radius: var(--radius); background: var(--white);
+    }
+    .dr-form .form-note { font-weight: 400; font-size: 0.82rem; color: var(--grey); }
+    .legal-note { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--grey); }
+  </style>
+</Layout>

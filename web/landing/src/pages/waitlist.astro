@@ -1,0 +1,373 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://chicking-api.cvchaudhary.workers.dev';
+
+const title = 'Chicking Mohali — Join the Waitlist';
+const description = 'Chicking is coming to Mohali. 475+ outlets, 45 countries, 25 years — Punjab\'s turn. Register for opening day WhatsApp notification.';
+---
+
+<Layout title={title} description={description} hideFooter={true}>
+  <div class="waitlist-page">
+    <section class="hero">
+      <div class="logo-wrap">
+        <div class="logo">
+          <img src="/images/chicking-logo.webp" alt="Chicking — it's my choice" width="120" height="36" />
+        </div>
+      </div>
+
+      <div class="badge">Mohali Opening — June 2026</div>
+
+      <h1>Mohali,<br />the wait is over.</h1>
+      <p>Dubai se nikla, 45 deshon mein famous — ab Punjab ki baari. Apna number daalo, opening ke din seedha WhatsApp pe update milenge.</p>
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <h2>Opening day ki pehli khabar chahiye?</h2>
+        <form id="waitlist-form" novalidate>
+          <div>
+            <label class="field-label" for="w-name">Your Name <span class="req">*</span></label>
+            <input id="w-name" type="text" name="name" placeholder="What do we call you?" required autocomplete="name" />
+          </div>
+          <div>
+            <label class="field-label" for="w-phone">WhatsApp Number <span class="req">*</span></label>
+            <input id="w-phone" type="tel" name="phone" placeholder="10-digit mobile number" required
+              pattern="[6-9][0-9]{9}" inputmode="tel" autocomplete="tel" />
+          </div>
+
+          <div>
+            <label class="field-label" for="w-city">Your city <span class="req">*</span></label>
+            <select id="w-city" name="city" required>
+              <option value="">— Pick your city —</option>
+              <option value="Mohali">Mohali</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Zirakpur">Zirakpur</option>
+              <option value="Panchkula">Panchkula</option>
+              <option value="Ludhiana">Ludhiana</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Jalandhar">Jalandhar</option>
+              <option value="Patiala">Patiala</option>
+              <option value="Bathinda">Bathinda</option>
+              <option value="Ambala">Ambala</option>
+              <option value="Other">Somewhere else</option>
+            </select>
+          </div>
+
+          <div class="consent-row" id="consent-required-row">
+            <input type="checkbox" id="w-consent" name="consent" required />
+            <div>
+              <label for="w-consent">
+                I agree to receive a WhatsApp notification from Chicking Mohali on opening day.
+              </label>
+              <a href="#disclaimer" style="font-size:.72rem;color:var(--red);display:inline-block;margin-top:.2rem;">Read disclaimer</a>
+            </div>
+          </div>
+
+          <div class="consent-row" style="background:#f0fdf4;border-color:#bbf7d0;">
+            <input type="checkbox" id="w-marketing" name="marketing" />
+            <label for="w-marketing" style="color:#374151;">
+              Yes, also send me early-bird offers, menu drops, and exclusive deals. (Optional)
+            </label>
+          </div>
+
+          <button class="submit-btn" type="submit" id="w-submit">Notify me — Main taiyaar hoon!</button>
+        </form>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat"><div class="stat-n">475+</div><div class="stat-l">Outlets worldwide</div></div>
+        <div class="stat"><div class="stat-n">45</div><div class="stat-l">Countries</div></div>
+        <div class="stat"><div class="stat-n">25</div><div class="stat-l">Years of mastery</div></div>
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <footer class="page-footer" id="disclaimer">
+      <div class="disclaimer">
+        <strong style="color:rgba(255,255,255,.8);">Consent & Data Notice</strong><br />
+        By submitting this form you consent to Chicking Mohali contacting you on WhatsApp to notify you of our opening date. If you selected the optional updates box, we may also send you early access offers and menu news — you can withdraw this at any time.<br /><br />
+        To opt out of any or all messages, reply <strong>STOP</strong> on WhatsApp or email <a href="mailto:franchise@chickingglobal.com">franchise@chickingglobal.com</a>. Your data is stored securely, used only for Chicking Mohali communications, and will not be sold or shared with third parties.
+      </div>
+      <p>© 2026 Chicking Mohali · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/data-request">Data Request</a> · <a href="/franchise">Franchise enquiries</a> · Part of the global <a href="https://www.chicking.com" target="_blank" rel="noopener">Chicking</a> family</p>
+    </footer>
+  </div>
+
+  <script define:vars={{ API_URL }}>
+    const form = document.getElementById('waitlist-form');
+    const btn  = document.getElementById('w-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const consent = document.getElementById('w-consent');
+      const cityEl  = document.getElementById('w-city');
+
+      let valid = true;
+
+      if (!consent.checked) {
+        document.getElementById('consent-required-row').style.borderColor = '#dc2626';
+        valid = false;
+      } else {
+        document.getElementById('consent-required-row').style.borderColor = '#fecaca';
+      }
+
+      if (!cityEl.value) {
+        cityEl.style.borderColor = '#dc2626';
+        valid = false;
+      } else {
+        cityEl.style.borderColor = '';
+      }
+
+      if (!valid) return;
+
+      const original = btn.textContent;
+      btn.textContent = 'Adding you…';
+      btn.disabled = true;
+
+      try {
+        const raw = Object.fromEntries(new FormData(form));
+        const data = {
+          type:      'b2c',
+          name:      raw.name,
+          phone:     raw.phone,
+          city:      raw.city,
+          consent:   'on',
+          marketing: raw.marketing === 'on' ? 'yes' : 'no',
+        };
+
+        const res = await fetch(`${API_URL}/api/leads`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!res.ok) throw new Error('Server error');
+
+        btn.textContent = "✓ You're in, yaar! We'll WhatsApp you on opening day.";
+        btn.style.background = '#166534';
+        form.reset();
+      } catch {
+        btn.textContent = 'Something went wrong — WhatsApp us directly.';
+        btn.disabled = false;
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.background = '';
+        }, 4000);
+      }
+    });
+  </script>
+
+  <style>
+
+    .waitlist-page {
+      --red: #BE1622;
+      --maroon: #89181C;
+      --orange: #F39200;
+      --white: #ffffff;
+      --grey: #6b7280;
+      --border: #e5e7eb;
+      --ink: #111827;
+      --font: 'Montserrat', system-ui, sans-serif;
+      min-height: calc(100svh - var(--header-height));
+      display: flex;
+      flex-direction: column;
+      background: var(--red);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.5rem 1.25rem 2rem;
+      color: var(--white);
+      flex: 1;
+    }
+
+    .logo-wrap { margin-bottom: 2rem; }
+    .logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .logo img { height: 44px; width: auto; display: block; filter: brightness(0) invert(1); }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 9999px;
+      padding: .3rem 1rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      max-width: 520px;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(.9rem, 2.5vw, 1.1rem);
+      opacity: .85;
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+
+    .form-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .form-card form { display: flex; flex-direction: column; gap: .75rem; }
+
+    .field-label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: .3rem;
+      letter-spacing: .03em;
+    }
+    .field-label .req { color: var(--red); }
+
+    input:not([type="checkbox"]) {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: var(--font);
+      background: #f9fafb;
+      color: var(--ink);
+      transition: border-color 200ms, background 200ms, box-shadow 200ms;
+      -webkit-appearance: none;
+    }
+    input:not([type="checkbox"]):focus {
+      outline: none;
+      border-color: var(--red);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(190,22,34,.12);
+    }
+
+    select {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: var(--font);
+      background: #f9fafb;
+      color: var(--ink);
+      transition: border-color 200ms, background 200ms, box-shadow 200ms;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+    }
+    select:focus {
+      outline: none;
+      border-color: var(--red);
+      background-color: var(--white);
+      box-shadow: 0 0 0 3px rgba(190,22,34,.12);
+    }
+    select option[value=""] { color: var(--grey); }
+
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      padding: .6rem .75rem;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      margin-top: 0;
+      accent-color: var(--red);
+      cursor: pointer;
+      padding: 0;
+    }
+    .consent-row label {
+      font-size: .74rem;
+      color: var(--grey);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+    .consent-row label a { color: var(--red); }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      padding: .95rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: background 200ms, transform 150ms;
+      box-shadow: 0 4px 16px rgba(190,22,34,.35);
+      min-height: 48px;
+    }
+    .submit-btn:hover,
+    .submit-btn:focus-visible { background: var(--maroon); transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ── STATS ── */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-n {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-l { font-size: .7rem; opacity: .7; color: var(--white); margin-top: .15rem; }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--maroon);
+      color: rgba(255,255,255,.55);
+      padding: 1.25rem 1.25rem 1.5rem;
+      font-size: .7rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .page-footer a { color: rgba(255,255,255,.75); text-decoration: underline; }
+    .disclaimer { max-width: 580px; margin: 0 auto .75rem; }
+  </style>
+</Layout>
