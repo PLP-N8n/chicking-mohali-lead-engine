@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Terms of Use — Chicking Mohali';
+const description = 'Terms governing the use of the Chicking Mohali website and the franchise / waitlist enquiry forms.';
+const updated = '17 June 2026';
+---
+
+<Layout title={title} description={description}>
+  <section class="section legal">
+    <p class="section-label">Legal</p>
+    <h1 class="section-title">Terms of Use</h1>
+    <p class="updated">Last updated: {updated}</p>
+
+    <p>These Terms govern your use of this website, operated by <strong>Trinity Foods International LLP</strong>
+    for the Chicking Mohali franchise (“we”, “us”, “our”). By using the site or submitting a form, you agree to these Terms.</p>
+
+    <h2>1. Nature of this site</h2>
+    <p>This website provides information about the Chicking Mohali outlet and lets you register interest as a
+    customer (waitlist / Founders Club) or as a prospective franchise partner. Information is provided in good
+    faith for general guidance.</p>
+
+    <h2>2. Not an offer or solicitation</h2>
+    <p>Nothing on this site constitutes a franchise offer, prospectus, securities offer, or investment
+    solicitation. <strong>No financial returns, profits, payback periods, or business outcomes are guaranteed
+    or implied.</strong> Any franchise relationship is governed solely by a separate written agreement signed
+    by both parties.</p>
+
+    <h2>3. Brand and global figures</h2>
+    <p>References to Chicking’s global presence (475+ outlets, 45+ countries, founded Dubai 2000) describe the
+    worldwide brand. The Mohali outlet is the first Chicking in North India and is operated under franchise by
+    Trinity Foods International LLP.</p>
+
+    <h2>4. Enquiry forms</h2>
+    <p>You agree to provide accurate information and not to submit forms in an automated, abusive, or fraudulent
+    manner. We may rate-limit, decline, or remove submissions to protect the service.</p>
+
+    <h2>5. Intellectual property</h2>
+    <p>The “Chicking” name and logo are trademarks of their respective owner and are used under franchise. Site
+    content may not be copied or reused without permission.</p>
+
+    <h2>6. Privacy</h2>
+    <p>Your personal data is handled as described in our <a href="/privacy">Privacy Policy</a>.</p>
+
+    <h2>7. Limitation of liability</h2>
+    <p>To the extent permitted by law, we are not liable for any loss arising from reliance on information on this
+    site. The site is provided “as is” without warranties of any kind.</p>
+
+    <h2>8. Governing law</h2>
+    <p>These Terms are governed by the laws of India, and disputes are subject to the jurisdiction of the courts
+    at Mohali / Chandigarh, Punjab.</p>
+
+    <h2>9. Contact</h2>
+    <p>Questions about these Terms: <a href="mailto:franchise@rudradigital.uk">franchise@rudradigital.uk</a>.</p>
+  </section>
+
+  <style>
+    .legal { max-width: 760px; }
+    .legal .updated { color: var(--grey); font-size: 0.9rem; margin-top: -0.75rem; margin-bottom: 2rem; }
+    .legal h2 { font-size: 1.15rem; font-weight: 800; margin: 2rem 0 0.5rem; letter-spacing: -0.01em; }
+    .legal p, .legal li { color: #374151; }
+    .legal a { color: var(--chicking-red); text-decoration: underline; }
+  </style>
+</Layout>

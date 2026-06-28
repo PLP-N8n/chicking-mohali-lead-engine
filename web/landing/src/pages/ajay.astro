@@ -1,0 +1,737 @@
+---
+const WHATSAPP = "919821279081";
+const WA_LINK = `https://wa.me/${WHATSAPP}?text=Ajay%20bhai%2C%20maine%20poora%20page%20dekh%20liya%20—%20baat%20karte%20hain`;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Ajay — Chicking Franchise Opportunity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:       #0a0a0a;
+      --bg2:      #111111;
+      --card:     #161616;
+      --border:   #242424;
+      --border2:  #2e2e2e;
+      --gold:     #D4A843;
+      --gold2:    #F5C842;
+      --red:      #BE1622;
+      --green:    #22c55e;
+      --white:    #f5f5f5;
+      --muted:    #6b7280;
+      --font-h:   'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-b:   'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-b);
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILS ── */
+    .section { padding: 6rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+    .label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .6rem;
+    }
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      border: 1px solid var(--border2); border-radius: 9999px;
+      padding: .3rem .9rem; font-size: .8rem; font-weight: 600; color: var(--gold);
+      background: rgba(212,168,67,.07);
+    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 4rem 1.5rem;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(190,22,34,.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(212,168,67,.07) 0%, transparent 60%),
+                  var(--bg);
+      position: relative;
+    }
+    .hero-logo {
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 14px;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    .hero-logo img { height: 38px; width: auto; display: block; }
+    .hero-tag {
+      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2.4rem, 8vw, 5rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .name { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted); max-width: 520px;
+      margin: 0 auto 3rem;
+    }
+    .hero-stats {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 3rem;
+    }
+    .hero-stat {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 12px; padding: 1rem 1.5rem; text-align: center;
+      min-width: 130px;
+    }
+    .hero-stat-n {
+      font-family: var(--font-h); font-size: 1.8rem; font-weight: 900;
+      color: var(--gold); line-height: 1;
+    }
+    .hero-stat-l { font-size: .75rem; color: var(--muted); margin-top: .25rem; }
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: var(--muted); font-size: .8rem; display: flex; flex-direction: column;
+      align-items: center; gap: .4rem; animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── BRAND PROOF ── */
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+    }
+    @media(min-width:640px){ .proof-grid { grid-template-columns: repeat(4,1fr); } }
+    .proof-cell {
+      background: var(--card); padding: 2rem 1.5rem; text-align: center;
+    }
+    .proof-n {
+      font-family: var(--font-h); font-size: 2.4rem; font-weight: 900;
+      color: var(--white); line-height: 1; margin-bottom: .3rem;
+    }
+    .proof-n span { color: var(--gold); }
+    .proof-l { font-size: .8rem; color: var(--muted); }
+    .proof-story {
+      margin-top: 3rem; background: var(--card);
+      border: 1px solid var(--border2); border-radius: 16px;
+      padding: 2.5rem; display: grid;
+      grid-template-columns: 1fr; gap: 1.5rem;
+    }
+    @media(min-width:640px){ .proof-story { grid-template-columns: 1fr 1fr; } }
+    .proof-story-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .proof-story-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(212,168,67,.1); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .proof-story-text h4 {
+      font-family: var(--font-h); font-weight: 700; font-size: .95rem;
+      margin-bottom: .2rem;
+    }
+    .proof-story-text p { font-size: .85rem; color: var(--muted); }
+
+    /* ── OPPORTUNITY ── */
+    .opp-section { background: linear-gradient(135deg, rgba(190,22,34,.08) 0%, transparent 60%); }
+    .opp-grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:640px){ .opp-grid { grid-template-columns: repeat(3,1fr); } }
+    .opp-card {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 1.75rem;
+    }
+    .opp-card-num {
+      font-family: var(--font-h); font-size: 2.5rem; font-weight: 900;
+      color: var(--red); line-height: 1; margin-bottom: .4rem;
+    }
+    .opp-card h3 {
+      font-family: var(--font-h); font-weight: 700; font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+    .opp-card p { font-size: .85rem; color: var(--muted); }
+
+    /* ── MODEL CARDS ── */
+    .models-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:640px){ .models-grid { grid-template-columns: 1fr 1fr; } }
+    .model-card {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 20px; padding: 2rem; position: relative; overflow: hidden;
+    }
+    .model-card.recommended {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(212,168,67,.06) 0%, var(--card) 50%);
+    }
+    .model-rec-badge {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: var(--gold); color: #000;
+      font-size: .7rem; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; padding: .3rem .8rem; border-radius: 9999px;
+    }
+    .model-type {
+      font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: .4rem;
+    }
+    .model-name {
+      font-family: var(--font-h); font-size: 1.4rem; font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    .model-rows { display: flex; flex-direction: column; gap: .75rem; }
+    .model-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .6rem 0; border-bottom: 1px solid var(--border);
+    }
+    .model-row:last-child { border-bottom: none; }
+    .model-row-label { font-size: .85rem; color: var(--muted); }
+    .model-row-value {
+      font-family: var(--font-h); font-weight: 700; font-size: .95rem;
+    }
+    .model-row-value.gold { color: var(--gold); }
+    .model-row-value.green { color: var(--green); }
+    .model-bullets { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+    .model-bullet {
+      display: flex; gap: .6rem; align-items: flex-start;
+      font-size: .82rem; color: var(--muted);
+    }
+    .model-bullet::before {
+      content: '✓'; color: var(--gold); font-weight: 700;
+      flex-shrink: 0; margin-top: .05rem;
+    }
+
+    /* ── CALCULATOR ── */
+    .calc-wrap {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .calc-toggle {
+      display: flex; gap: .5rem; margin-bottom: 2rem;
+      background: var(--bg2); border-radius: 10px; padding: .3rem;
+    }
+    .calc-toggle-btn {
+      flex: 1; padding: .6rem; border: none; border-radius: 8px;
+      font-family: var(--font-h); font-weight: 700; font-size: .9rem;
+      cursor: pointer; transition: all 200ms;
+      background: transparent; color: var(--muted);
+    }
+    .calc-toggle-btn.active {
+      background: var(--gold); color: #000;
+    }
+    .calc-slider-row { margin-bottom: 2rem; }
+    .calc-slider-label {
+      display: flex; justify-content: space-between;
+      font-size: .85rem; margin-bottom: .75rem;
+    }
+    .calc-slider-label span { color: var(--muted); }
+    .calc-slider-label strong {
+      font-family: var(--font-h); font-weight: 800;
+      color: var(--gold); font-size: 1rem;
+    }
+    input[type=range] {
+      width: 100%; appearance: none; height: 4px;
+      background: var(--border2); border-radius: 9999px; outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      appearance: none; width: 20px; height: 20px;
+      background: var(--gold); border-radius: 50%; cursor: pointer;
+    }
+    .calc-results {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+      margin-top: 2rem;
+    }
+    @media(max-width:500px){ .calc-results { grid-template-columns: 1fr; } }
+    .calc-result {
+      background: var(--bg2); border-radius: 12px; padding: 1.25rem;
+      text-align: center;
+    }
+    .calc-result-val {
+      font-family: var(--font-h); font-size: 1.5rem; font-weight: 900;
+      color: var(--gold); line-height: 1; margin-bottom: .3rem;
+    }
+    .calc-result-label { font-size: .75rem; color: var(--muted); }
+    .calc-note {
+      margin-top: 1.25rem; font-size: .75rem; color: var(--muted);
+      text-align: center; border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: .9rem;
+    }
+    th {
+      font-family: var(--font-h); font-weight: 700; padding: 1rem 1.25rem;
+      text-align: left; border-bottom: 1px solid var(--border2);
+      background: var(--card);
+    }
+    th:first-child { color: var(--muted); }
+    th:nth-child(2) { color: var(--gold); }
+    th:nth-child(3) { color: var(--white); }
+    td {
+      padding: .9rem 1.25rem; border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    td:first-child { color: var(--muted); font-size: .85rem; }
+    td:nth-child(2) { font-family: var(--font-h); font-weight: 600; color: var(--gold); }
+    td:nth-child(3) { font-family: var(--font-h); font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(212,168,67,.1) 0%, rgba(190,22,34,.08) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      text-align: center; padding: 6rem 1.5rem;
+    }
+    .cta-section h2 {
+      font-family: var(--font-h); font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900; letter-spacing: -.03em;
+      margin-bottom: 1rem;
+    }
+    .cta-section p { color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: #25d366; color: #fff;
+      padding: 1rem 2.5rem; border-radius: 9999px;
+      font-family: var(--font-h); font-weight: 800; font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(37,211,102,.3);
+      transition: transform 200ms, box-shadow 200ms;
+    }
+    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,211,102,.4); }
+    .btn-wa svg { flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem 1.5rem;
+      font-size: .75rem; color: #3a3a3a;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════ HERO -->
+  <section class="hero">
+    <a href="/" class="hero-logo">
+      <img src="/images/chicking-logo.webp" alt="Chicking" />
+    </a>
+    <div class="hero-tag">Prepared exclusively for Ajay Kumar · Confidential</div>
+    <h1>
+      <span class="name">Ajay,</span><br />
+      yeh page<br />sirf tumhare liye hai.
+    </h1>
+    <p class="hero-sub">
+      North India ka sabse bada chicken franchise opportunity —
+      poori detail, poori transparency, sirf tum logon ke liye taiyaar ki gayi hai.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n" data-count="45">0</div>
+        <div class="hero-stat-l">Countries</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" data-count="475">0</div>
+        <div class="hero-stat-l">Outlets Worldwide</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" data-count="3">0</div>
+        <div class="hero-stat-l">Million Customers/Month</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" data-count="25">0</div>
+        <div class="hero-stat-l">Years Perfected</div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Scroll karo
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════ BRAND PROOF -->
+  <section class="section fade-up">
+    <div class="label">The Brand</div>
+    <h2 style="font-family:var(--font-h);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:2.5rem;">
+      25 saal. 45 desh.<br />Ab North India.
+    </h2>
+    <div class="proof-grid">
+      <div class="proof-cell">
+        <div class="proof-n"><span>45</span>+</div>
+        <div class="proof-l">Countries</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-n"><span>475</span>+</div>
+        <div class="proof-l">Outlets</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-n"><span>3</span>M+</div>
+        <div class="proof-l">Customers / Month</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-n"><span>5000</span>+</div>
+        <div class="proof-l">People Employed</div>
+      </div>
+    </div>
+
+    <div class="proof-story">
+      <div class="proof-story-item">
+        <div class="proof-story-icon">🌍</div>
+        <div class="proof-story-text">
+          <h4>Dubai mein janam, duniya bhar mein naam</h4>
+          <p>2000 mein Dubai mein shuruat ki. Aaj 45+ deshon mein ek globally recognized QSR brand hai.</p>
+        </div>
+      </div>
+      <div class="proof-story-item">
+        <div class="proof-story-icon">💰</div>
+        <div class="proof-story-text">
+          <h4>50% kam capex — kisi bhi international QSR se</h4>
+          <p>KFC, McDonald's se aadha investment — aur returns comparable. Yeh structured franchise ka jaadu hai.</p>
+        </div>
+      </div>
+      <div class="proof-story-item">
+        <div class="proof-story-icon">🏆</div>
+        <div class="proof-story-text">
+          <h4>India mein already 48+ locations</h4>
+          <p>Proven Indian market entry. Systems tested. Supply chain ready. North India mein next expansion focus.</p>
+        </div>
+      </div>
+      <div class="proof-story-item">
+        <div class="proof-story-icon">🤝</div>
+        <div class="proof-story-text">
+          <h4>Full BFI support — Day 1 se</h4>
+          <p>Site selection, training, grand opening support, monthly ops audits — sab kuch included hai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════ OPPORTUNITY -->
+  <section class="section opp-section fade-up">
+    <div class="label">The North India Opportunity</div>
+    <h2 style="font-family:var(--font-h);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:2.5rem;">
+      First mover advantage.<br />Ab ya kabhi nahi.
+    </h2>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="opp-card-num">0</div>
+        <h3>Chicking in North India</h3>
+        <p>Punjab, Haryana, Himachal, Chandigarh — kisi bhi city mein abhi tak koi Chicking outlet nahi. Yeh window hamesha nahi rahegi.</p>
+      </div>
+      <div class="opp-card">
+        <div class="opp-card-num">₹2.3L+</div>
+        <h3>Average monthly income (FOFO, conservative)</h3>
+        <p>₹15L monthly sales pe 15% EBITDA return. Yeh conservative estimate hai — top locations pe kaafi zyada.</p>
+      </div>
+      <div class="opp-card">
+        <div class="opp-card-num">5 yr</div>
+        <h3>Franchise tenure — proven model</h3>
+        <p>5 saal ka structured agreement. Standardised systems, centralised operations support, aur performance-linked returns.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════ MODELS -->
+  <section class="section fade-up">
+    <div class="label">Two Models — Tumhari Choice</div>
+    <h2 style="font-family:var(--font-h);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:2.5rem;">
+      FOFO ya FOCO —<br />dono ka full breakdown.
+    </h2>
+    <div class="models-grid">
+
+      <!-- FOFO -->
+      <div class="model-card recommended">
+        <div class="model-rec-badge">Recommended</div>
+        <div class="model-type">Model 1</div>
+        <div class="model-name">FOFO<br /><span style="font-size:.9rem;font-weight:600;color:var(--muted);">Franchisee Owned, Franchisee Operated</span></div>
+        <div class="model-rows">
+          <div class="model-row">
+            <span class="model-row-label">Investment</span>
+            <span class="model-row-value gold">~₹75 Lakhs</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Monthly Sales</span>
+            <span class="model-row-value">₹15L – ₹25L</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Monthly Return</span>
+            <span class="model-row-value green">12% – 18% (EBITDA)</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Payback Period</span>
+            <span class="model-row-value gold">1.5 – 3 Years</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Tenure</span>
+            <span class="model-row-value">5 Years</span>
+          </div>
+        </div>
+        <div class="model-bullets">
+          <div class="model-bullet">Tum khud operate karte ho — maximum control</div>
+          <div class="model-bullet">Higher potential returns — performance linked</div>
+          <div class="model-bullet">Operational support + systems provided</div>
+          <div class="model-bullet">Food Court, Mall, ya High Street — flexible</div>
+        </div>
+      </div>
+
+      <!-- FOCO -->
+      <div class="model-card">
+        <div class="model-type">Model 2</div>
+        <div class="model-name">FOCO<br /><span style="font-size:.9rem;font-weight:600;color:var(--muted);">Franchisee Owned, Company Operated</span></div>
+        <div class="model-rows">
+          <div class="model-row">
+            <span class="model-row-label">Investment</span>
+            <span class="model-row-value gold">~₹75 Lakhs</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Monthly Sales</span>
+            <span class="model-row-value">₹15L – ₹25L</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Monthly Return</span>
+            <span class="model-row-value green">8% – 9% (Fixed)</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Payback Period</span>
+            <span class="model-row-value">3 – 5 Years</span>
+          </div>
+          <div class="model-row">
+            <span class="model-row-label">Tenure</span>
+            <span class="model-row-value">5 Years</span>
+          </div>
+        </div>
+        <div class="model-bullets">
+          <div class="model-bullet">Company professionally operates the outlet</div>
+          <div class="model-bullet">Fixed returns — lower risk, passive income</div>
+          <div class="model-bullet">Centralised systems, standardised operations</div>
+          <div class="model-bullet">Ideal if you want investment without operations</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════ CALCULATOR -->
+  <section class="section fade-up">
+    <div class="label">ROI Calculator</div>
+    <h2 style="font-family:var(--font-h);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:.75rem;">
+      Apna return calculate karo.
+    </h2>
+    <p style="color:var(--muted);margin-bottom:2.5rem;">Expected monthly sales adjust karo — projected income seedha dikhta hai.</p>
+
+    <div class="calc-wrap">
+      <div class="calc-toggle">
+        <button class="calc-toggle-btn active" id="btn-fofo" onclick="setModel('fofo')">FOFO (12–18%)</button>
+        <button class="calc-toggle-btn" id="btn-foco" onclick="setModel('foco')">FOCO (8–9% Fixed)</button>
+      </div>
+
+      <div class="calc-slider-row">
+        <div class="calc-slider-label">
+          <span>Expected Monthly Sales</span>
+          <strong id="sales-label">₹20 Lakhs</strong>
+        </div>
+        <input type="range" id="sales-slider" min="15" max="25" step="1" value="20"
+          oninput="updateCalc()" />
+        <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:.4rem;">
+          <span>₹15L (Conservative)</span><span>₹25L (High Performer)</span>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="calc-result">
+          <div class="calc-result-val" id="monthly-income">—</div>
+          <div class="calc-result-label">Monthly Income</div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-val" id="annual-income">—</div>
+          <div class="calc-result-label">Annual Income</div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-val" id="payback">—</div>
+          <div class="calc-result-label">Est. Payback</div>
+        </div>
+      </div>
+      <div class="calc-note">
+        Yeh projections Chicking ke official franchise brochure ke numbers pe based hain (₹75L investment).
+        Actual returns location, sales performance, aur operations pe depend karte hain.
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════ TABLE -->
+  <section class="section fade-up">
+    <div class="label">Full Financial Snapshot</div>
+    <h2 style="font-family:var(--font-h);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:2.5rem;">
+      Side-by-side breakdown.
+    </h2>
+    <div class="table-wrap" style="border:1px solid var(--border2);border-radius:16px;overflow:hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>FOFO</th>
+            <th>FOCO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Investment (approx.)</td><td>₹75 Lakhs</td><td>₹75 Lakhs</td></tr>
+          <tr><td>Monthly Sales (projected)</td><td>₹15L – ₹25L</td><td>₹15L – ₹25L</td></tr>
+          <tr><td>Monthly Return</td><td>12% – 18% EBITDA</td><td>8% – 9% Fixed</td></tr>
+          <tr><td>Payback Period</td><td>1.5 – 3 Years</td><td>3 – 5 Years</td></tr>
+          <tr><td>Operations</td><td>Franchisee-run</td><td>Company-run</td></tr>
+          <tr><td>Risk Profile</td><td>Higher return, more hands-on</td><td>Fixed return, passive</td></tr>
+          <tr><td>Tenure</td><td>5 Years</td><td>5 Years</td></tr>
+          <tr><td>Expansion Focus</td><td colspan="2" style="color:var(--muted);">Tier 1, 2 & 3 Cities — North India</td></tr>
+          <tr><td>Capex vs International QSRs</td><td colspan="2" style="color:var(--green);font-weight:700;">50% Lower</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ═══════════════════════════════════════ CTA -->
+  <section class="cta-section fade-up">
+    <div class="label" style="margin-bottom:1rem;">Next Step</div>
+    <h2>
+      Ajay, Mohali ka<br />pehla franchise<br />
+      <span style="color:var(--gold);">tumhara ho sakta hai.</span>
+    </h2>
+    <p>
+      Sab kuch dekh liya — numbers, models, opportunity.
+      Agar baat karni hai toh seedha WhatsApp karo.
+    </p>
+    <a class="btn-wa" href="{WA_LINK}" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      WhatsApp pe baat karo
+    </a>
+    <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">
+      Ya email karo: franchise@chickingglobal.com
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER -->
+  <footer>
+    <p>Chicking Mohali · Prepared for Ajay Kumar · Confidential · Not for distribution</p>
+    <p style="margin-top:.4rem;">© 2026 Chicking® — it's my choice</p>
+  </footer>
+
+  <script>
+    // ── COUNTER ANIMATION
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || (target === 3 ? 'M+' : target === 475 ? '+' : target === 45 ? '+' : '');
+      let start = 0;
+      const duration = 1800;
+      const step = timestamp => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target) + (progress >= 1 ? (target === 3 ? 'M+' : '+') : '');
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const counters = document.querySelectorAll('[data-count]');
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
+    }, { threshold: .3 });
+    counters.forEach(c => counterObs.observe(c));
+
+    // ── FADE IN ON SCROLL
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
+    }, { threshold: .1 });
+    fadeEls.forEach(el => fadeObs.observe(el));
+
+    // ── CALCULATOR
+    let model = 'fofo';
+
+    function setModel(m) {
+      model = m;
+      document.getElementById('btn-fofo').classList.toggle('active', m === 'fofo');
+      document.getElementById('btn-foco').classList.toggle('active', m === 'foco');
+      updateCalc();
+    }
+
+    function fmt(n) {
+      if (n >= 100) return '₹' + (n / 100).toFixed(1) + 'Cr';
+      return '₹' + n.toFixed(1) + 'L';
+    }
+
+    function updateCalc() {
+      const sales = parseInt(document.getElementById('sales-slider').value);
+      document.getElementById('sales-label').textContent = '₹' + sales + ' Lakhs';
+
+      let minRet, maxRet, paybackMin, paybackMax;
+      if (model === 'fofo') {
+        minRet = sales * 0.12;
+        maxRet = sales * 0.18;
+        paybackMin = 1.5;
+        paybackMax = 3;
+      } else {
+        minRet = sales * 0.08;
+        maxRet = sales * 0.09;
+        paybackMin = 3;
+        paybackMax = 5;
+      }
+
+      const annMin = minRet * 12;
+      const annMax = maxRet * 12;
+
+      document.getElementById('monthly-income').textContent = fmt(minRet) + ' – ' + fmt(maxRet);
+      document.getElementById('annual-income').textContent = fmt(annMin) + ' – ' + fmt(annMax);
+      document.getElementById('payback').textContent = paybackMin + ' – ' + paybackMax + ' yrs';
+    }
+
+    updateCalc();
+  </script>
+</body>
+</html>

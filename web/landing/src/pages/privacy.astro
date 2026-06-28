@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Privacy Policy — Chicking Mohali';
+const description = 'How Chicking Mohali (Trinity Foods International LLP) collects, uses, and protects your personal data, and your rights under India’s DPDP Act, 2023.';
+const updated = '17 June 2026';
+---
+
+<Layout title={title} description={description}>
+  <section class="section legal">
+    <p class="section-label">Legal</p>
+    <h1 class="section-title">Privacy Policy</h1>
+    <p class="updated">Last updated: {updated}</p>
+
+    <p>This Privacy Policy explains how <strong>Trinity Foods International LLP</strong>, operator of the
+    Chicking Mohali franchise (“we”, “us”, “our”), collects and uses your personal data through this
+    website. We process personal data in accordance with India’s Digital Personal Data Protection Act, 2023 (DPDP Act).</p>
+
+    <h2>1. What we collect</h2>
+    <ul>
+      <li><strong>Franchise enquiries:</strong> name, phone number, email, city, investment range, property and business background you choose to share.</li>
+      <li><strong>Waitlist / Founders Club:</strong> name, phone number, city, and (if you opt in) your Instagram handle and a referral code.</li>
+      <li><strong>Technical data:</strong> limited request metadata (e.g. a hashed indicator of your IP and browser) used only for security and abuse prevention.</li>
+    </ul>
+
+    <h2>2. Why we use it</h2>
+    <p>Solely to respond to your enquiry, manage the waitlist/Founders Club, keep you informed about the Mohali
+    launch where you have opted in, and protect the service from spam and abuse. We do <strong>not</strong> sell
+    your data, and we do <strong>not</strong> share it with third parties for their own marketing.</p>
+
+    <h2>3. Consent</h2>
+    <p>We collect your data on the basis of the consent you give when you submit a form. You may withdraw your
+    consent at any time (see section 7) — withdrawal does not affect processing carried out before withdrawal.</p>
+
+    <h2>4. Who processes it</h2>
+    <p>Your data is handled by us and by trusted service providers acting on our instructions — for example our
+    hosting and database provider (Cloudflare), our CRM (HubSpot), and our email provider — purely to deliver the
+    service described above. These providers may process data outside India under appropriate safeguards.</p>
+
+    <h2>5. How long we keep it</h2>
+    <p>We retain enquiry data only as long as needed to respond and to maintain a record of legitimate business
+    contact, after which it is deleted or anonymised. You can request earlier deletion at any time.</p>
+
+    <h2>6. How we protect it</h2>
+    <p>Access to lead data is restricted to authorised personnel, transmitted over encrypted connections, and IP
+    addresses are stored only in hashed form. We do not store payment information on this site.</p>
+
+    <h2>7. Your rights</h2>
+    <p>Under the DPDP Act you have the right to access, correct, and erase your personal data, to withdraw consent,
+    and to nominate another person to exercise your rights. To do any of these, email
+    <a href="mailto:franchise@rudradigital.uk">franchise@rudradigital.uk</a> or use our
+    <a href="/data-request">Data Request</a> page.</p>
+
+    <h2>8. Grievances</h2>
+    <p>If you have a concern about how your data is handled, contact us at
+    <a href="mailto:franchise@rudradigital.uk">franchise@rudradigital.uk</a> and we will respond within a
+    reasonable period.</p>
+
+    <h2>9. Changes</h2>
+    <p>We may update this policy from time to time. The “last updated” date above reflects the current version.</p>
+
+    <p class="legal-note">This is not a franchise offer, prospectus, or investment solicitation, and no financial
+    returns or business outcomes are guaranteed. See our <a href="/terms">Terms</a>.</p>
+  </section>
+
+  <style>
+    .legal { max-width: 760px; }
+    .legal .updated { color: var(--grey); font-size: 0.9rem; margin-top: -0.75rem; margin-bottom: 2rem; }
+    .legal h2 { font-size: 1.15rem; font-weight: 800; margin: 2rem 0 0.5rem; letter-spacing: -0.01em; }
+    .legal p, .legal li { color: #374151; }
+    .legal ul { padding-left: 1.25rem; margin: 0.5rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+    .legal a { color: var(--chicking-red); text-decoration: underline; }
+    .legal .legal-note { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--grey); }
+  </style>
+</Layout>

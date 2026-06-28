@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://chicking-api.cvchaudhary.workers.dev';
+
+const brand = {
+  name: 'Chicking Mohali',
+  handle: '@chickingmohali',
+  tagline: 'International chicken brand. Dubai roots. Punjab\'s turn.',
+  subline: '475+ outlets. 45 countries. Opening in Mohali — June 2026.',
+  stats: [
+    { n: '475+', label: 'Outlets worldwide' },
+    { n: '45', label: 'Countries' },
+    { n: '25', label: 'Years' },
+  ],
+};
+
+const title = 'Chicking Mohali — International Chicken Brand Coming to Punjab';
+const description = 'Chicking Mohali — Dubai-born chicken QSR, opening in Punjab. 475+ outlets across 45 countries. Register for opening day.';
+---
+
+<Layout title={title} description={description} page="home">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span aria-hidden="true">🌍</span> International QSR — Born in Dubai, loved in 45 countries
+      </div>
+      <h1>Punjab's wait is <span class="accent">over.</span></h1>
+      <p class="hero-sub">{brand.tagline} {brand.subline}</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="/waitlist">Notify me when we open</a>
+        <a class="btn btn-outline" href="/franchise">Franchise opportunity</a>
+      </div>
+    </div>
+    <img
+      src="/images/hero-mohali.jpg"
+      alt="Chicking Mohali — Mohali's new craving destination, opening soon in Punjab"
+      width="1600"
+      height="900"
+      loading="eager"
+      class="hero-image"
+    />
+  </section>
+
+  <div class="stats-bar" aria-label="Global Chicking presence">
+    {brand.stats.map((s) => (
+      <div class="stat">
+        <div class="stat-n">{s.n}</div>
+        <div class="stat-label">{s.label}</div>
+      </div>
+    ))}
+  </div>
+
+  <div class="brand-strip">
+    <div class="brand-strip-inner">
+      <h2>25 saal. 45 desh. 475+ outlets. Ab Punjab ki baari.</h2>
+      <p>Born in Dubai. Loved across 45 countries. Now opening in Mohali, Punjab.</p>
+    </div>
+  </div>
+
+  <section class="section cta-hub" id="get-involved">
+    <div class="section-label">Get involved</div>
+    <h2 class="section-title">Three ways to be part of it.</h2>
+    <div class="cta-grid">
+      <a class="cta-card" href="/founders">
+        <div class="cta-emoji" aria-hidden="true">🎉</div>
+        <h3>Join the Founders Club</h3>
+        <p>Be among the very first in Mohali — grand-opening perks, founding-member rewards, and referral bonuses.</p>
+        <span class="cta-link">Join the club →</span>
+      </a>
+      <a class="cta-card" href="/franchise">
+        <div class="cta-emoji" aria-hidden="true">🤝</div>
+        <h3>Own a franchise</h3>
+        <p>475+ outlets, 45 countries. Bring Chicking to your city in Punjab — register your interest.</p>
+        <span class="cta-link">Franchise enquiry →</span>
+      </a>
+      <a class="cta-card" href="/waitlist">
+        <div class="cta-emoji" aria-hidden="true">🔔</div>
+        <h3>Notify me when you open</h3>
+        <p>Drop your number and we'll WhatsApp you the moment the Mohali store opens its doors.</p>
+        <span class="cta-link">Get the opening alert →</span>
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1.25rem 4rem;
+      background: linear-gradient(160deg, #fff 0%, #fff4f4 100%);
+    }
+    .hero-inner { max-width: 680px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--chicking-red);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 7vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .hero h1 .accent { color: var(--chicking-red); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      color: var(--grey);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(190, 22, 34, 0.15);
+    }
+
+    .stats-bar {
+      background: var(--chicking-maroon);
+      color: var(--white);
+      padding: 2.5rem 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    .stat-n {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      font-weight: 800;
+      color: var(--chicking-red);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label { font-size: 0.85rem; color: rgba(255, 255, 255, 0.75); }
+
+    .brand-strip {
+      background: var(--chicking-red);
+      color: var(--white);
+      padding: 2.5rem 1.25rem;
+      text-align: center;
+    }
+    .brand-strip-inner { max-width: 760px; margin: 0 auto; }
+    .brand-strip h2 {
+      font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+    .brand-strip p { font-size: 0.95rem; opacity: 0.85; }
+
+    .menu-section { padding-bottom: 2rem; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+    .menu-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: border-color 200ms, box-shadow 200ms, transform 150ms;
+    }
+    .menu-card:hover {
+      border-color: var(--chicking-red);
+      box-shadow: 0 4px 20px rgba(190, 22, 34, 0.1);
+      transform: translateY(-2px);
+    }
+    .menu-card-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+    .menu-card-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+    .menu-card-desc { font-size: 0.9rem; color: var(--grey); }
+
+    .stores-section { padding-top: 2rem; }
+    .store-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .store-grid img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+    @media (max-width: 560px) { .store-grid { grid-template-columns: 1fr; } }
+
+    .cta-hub { text-align: center; }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    @media (min-width: 760px) { .cta-grid { grid-template-columns: repeat(3, 1fr); } }
+    .cta-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 0.5rem;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.35rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 200ms, box-shadow 200ms, transform 150ms;
+    }
+    .cta-card:hover,
+    .cta-card:focus-visible {
+      border-color: var(--chicking-red);
+      box-shadow: 0 6px 24px rgba(190, 22, 34, 0.12);
+      transform: translateY(-3px);
+    }
+    .cta-emoji { font-size: 1.8rem; line-height: 1; }
+    .cta-card h3 { font-weight: 800; font-size: 1.1rem; }
+    .cta-card p { font-size: 0.9rem; color: var(--grey); flex: 1; }
+    .cta-link {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--chicking-red);
+      margin-top: 0.25rem;
+    }
+  </style>
+</Layout>

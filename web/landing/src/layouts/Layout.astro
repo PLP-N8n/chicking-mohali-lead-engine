@@ -1,0 +1,523 @@
+---
+// Shared layout for all PUBLIC pages on Chicking Mohali.
+// Provides header nav, footer, global brand tokens, and responsive scaffold.
+
+export interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogUrl?: string;
+  page?: 'home' | 'founders' | 'franchise';
+  hideFooter?: boolean;
+}
+
+const { title, description, ogImage, ogUrl, page, hideFooter } = Astro.props;
+
+const WHATSAPP_NUMBER = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '919821279081';
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Chicking%20Mohali%2C%20I%27d%20like%20to%20know%20more`;
+const SITE_ORIGIN = Astro.url.origin;
+const canonical = ogUrl ? ogUrl : Astro.url.pathname;
+const resolvedImage = ogImage ?? `${SITE_ORIGIN}/images/hero-mohali.jpg`;
+const resolvedUrl = canonical.startsWith('http') ? canonical : `${SITE_ORIGIN}${canonical}`;
+
+const navLinks = [
+  { href: '/', label: 'Home', id: 'home' },
+  { href: '/founders', label: 'Founders Club', id: 'founders' },
+  { href: '/franchise', label: 'Franchise', id: 'franchise' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#BE1622" />
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <title>{title}</title>
+
+    <link rel="canonical" href={resolvedUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedImage} />
+    <meta property="og:url" content={resolvedUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="/" aria-label="Chicking Mohali home">
+          <img
+            src="/images/chicking-logo.webp"
+            alt="Chicking — it's my choice"
+            width="140"
+            height="40"
+          />
+        </a>
+
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Open menu"
+          type="button"
+        >
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+        </button>
+
+        <nav id="main-nav" class="main-nav" aria-label="Primary">
+          <ul class="nav-list">
+            {navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class={`nav-link ${page === link.id ? 'is-active' : ''}`}
+                  aria-current={page === link.id ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a class="nav-cta" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+            WhatsApp us
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <a class="wa-float" href={WHATSAPP_LINK} target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <span>Chat</span>
+    </a>
+
+    {!hideFooter && (
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <img
+              src="/images/chicking-logo.webp"
+              alt="Chicking"
+              width="120"
+              height="34"
+            />
+            <p class="tagline">It's my choice.</p>
+          </div>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="/">Home</a>
+            <a href="/founders">Founders Club</a>
+            <a href="/franchise">Franchise</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/data-request">Data Request</a>
+          </nav>
+          <p class="footer-copy">
+            © 2026 Chicking Mohali · Part of the global <a href="https://www.chicking.com" target="_blank" rel="noopener">Chicking</a> family — Founded Dubai 2000.
+          </p>
+        </div>
+      </footer>
+    )}
+
+    <script is:inline>
+      // Mobile menu toggle
+      (function () {
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.main-nav');
+        if (!toggle || !nav) return;
+
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('is-open');
+          toggle.classList.toggle('is-open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+
+        nav.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            nav.classList.remove('is-open');
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+          });
+        });
+      })();
+    </script>
+
+    <style is:global>
+      :root {
+        --chicking-red: #BE1622;
+        --chicking-maroon: #89181C;
+        --chicking-orange: #F39200;
+        --chicking-yellow: #F5C842;
+        --white: #ffffff;
+        --off-white: #fafafa;
+        --ink: #111827;
+        --grey: #6b7280;
+        --light-grey: #9ca3af;
+        --border: #e5e7eb;
+        --radius: 12px;
+        --radius-pill: 9999px;
+        --shadow-sm: 0 1px 6px rgba(17, 24, 39, 0.06);
+        --shadow-md: 0 4px 20px rgba(17, 24, 39, 0.08);
+        --shadow-red: 0 4px 24px rgba(190, 22, 34, 0.28);
+        --font-body: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-display: 'Pacifico', cursive;
+        --header-height: 64px;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--off-white);
+        color: var(--ink);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      img, svg, video {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      /* Global focus visibility */
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid var(--chicking-red);
+        outline-offset: 2px;
+      }
+
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        z-index: 200;
+        background: var(--chicking-red);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        font-weight: 700;
+        text-decoration: none;
+        transition: top 200ms;
+      }
+      .skip-link:focus { top: 1rem; }
+
+      /* ── HEADER ─────────────────────────────────────────────── */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        line-height: 0;
+      }
+      .logo img {
+        height: 36px;
+        width: auto;
+      }
+
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+      .menu-bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition: transform 200ms, opacity 200ms;
+      }
+      .menu-toggle.is-open .menu-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .menu-toggle.is-open .menu-bar:nth-child(2) { opacity: 0; }
+      .menu-toggle.is-open .menu-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .main-nav {
+        position: fixed;
+        inset: var(--header-height) 0 auto 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.25rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 250ms ease, opacity 250ms ease, visibility 250ms;
+      }
+      .main-nav.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .nav-link {
+        display: block;
+        padding: 0.75rem 0;
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--ink);
+        transition: color 200ms;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link:hover,
+      .nav-link.is-active { color: var(--chicking-red); }
+      .nav-link.is-active { font-weight: 700; }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        background: var(--chicking-red);
+        color: var(--white);
+        border-radius: var(--radius-pill);
+        padding: 0.55rem 1.25rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 200ms, transform 150ms;
+      }
+      .nav-cta:hover { background: var(--chicking-maroon); transform: translateY(-1px); }
+
+      @media (min-width: 768px) {
+        .menu-toggle { display: none; }
+        .main-nav {
+          position: static;
+          transform: none;
+          opacity: 1;
+          visibility: visible;
+          background: transparent;
+          border: none;
+          padding: 0;
+          flex-direction: row;
+          align-items: center;
+          gap: 0.5rem;
+          margin-left: auto;
+        }
+        .nav-list {
+          flex-direction: row;
+          gap: 0.25rem;
+        }
+        .nav-link {
+          padding: 0.5rem 0.9rem;
+          border-radius: var(--radius-pill);
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+        }
+        .nav-link.is-active { background: rgba(190, 22, 34, 0.08); }
+      }
+
+      /* ── WHATSAPP FLOAT ─────────────────────────────────────── */
+      .wa-float {
+        position: fixed;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        z-index: 90;
+        background: #25d366;
+        color: var(--white);
+        border-radius: var(--radius-pill);
+        padding: 0.75rem 1.1rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+        transition: transform 200ms, box-shadow 200ms;
+      }
+      .wa-float:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45); }
+      .wa-float svg { flex-shrink: 0; }
+
+      /* ── FOOTER ─────────────────────────────────────────────── */
+      .site-footer {
+        background: var(--chicking-maroon);
+        color: rgba(255, 255, 255, 0.7);
+        padding: 2.5rem 1.25rem;
+        font-size: 0.85rem;
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        text-align: center;
+      }
+      .footer-brand img {
+        height: 32px;
+        width: auto;
+        margin: 0 auto 0.5rem;
+        filter: brightness(0) invert(1);
+      }
+      .footer-brand .tagline {
+        font-family: var(--font-display);
+        color: var(--white);
+        font-size: 1.1rem;
+      }
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem 1.25rem;
+      }
+      .footer-nav a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 200ms;
+        display: inline-block;
+        padding: 0.35rem 0;
+        min-height: 24px;
+      }
+      .footer-nav a:hover { color: var(--white); }
+      .footer-copy a { color: var(--chicking-yellow); text-decoration: underline; }
+
+      /* ── UTILITY CLASSES ────────────────────────────────────── */
+      .section {
+        padding: 4rem 1.25rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--chicking-red);
+        margin-bottom: 0.5rem;
+      }
+      .section-title {
+        font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border-radius: var(--radius-pill);
+        padding: 0.85rem 1.75rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 200ms, transform 150ms, box-shadow 200ms;
+        border: none;
+      }
+      .btn-primary {
+        background: var(--chicking-red);
+        color: var(--white);
+        box-shadow: var(--shadow-red);
+      }
+      .btn-primary:hover,
+      .btn-primary:focus-visible { background: var(--chicking-maroon); transform: translateY(-2px); }
+      .btn-outline {
+        background: transparent;
+        color: var(--ink);
+        border: 1.5px solid var(--border);
+      }
+      .btn-outline:hover,
+      .btn-outline:focus-visible { border-color: var(--chicking-red); color: var(--chicking-red); transform: translateY(-2px); }
+
+      .card {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+      }
+
+      @media (min-width: 768px) {
+        .section { padding: 5rem 1.5rem; }
+      }
+    </style>
+  </body>
+</html>
